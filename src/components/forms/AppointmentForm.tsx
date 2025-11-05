@@ -33,6 +33,8 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
 
   const [errors, setErrors] = useState<FormErrors>({})
   const [touched, setTouched] = useState<Record<string, boolean>>({})
+  // Simple honeypot to reduce spam bots
+  const [botTrap, setBotTrap] = useState<string>('')
 
   // Validation functions
   const validateName = (name: string): string | undefined => {
@@ -135,6 +137,9 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
       return
     }
 
+    // Abort silently if honeypot is filled (likely a bot)
+    if (botTrap) return
+
     try {
       await onSubmit(formData)
     } catch (error) {
@@ -179,10 +184,14 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
             errors.name && touched.name ? 'border-red-500' : 'border-gray-300'
           )}
           placeholder="Enter your full name"
+          autoComplete="name"
+          aria-required="true"
+          aria-invalid={!!(errors.name && touched.name)}
+          aria-describedby={errors.name && touched.name ? 'name-error' : undefined}
           disabled={loading}
         />
         {errors.name && touched.name && (
-          <p className="mt-1 text-sm text-red-600">{errors.name}</p>
+          <p id="name-error" role="alert" className="mt-1 text-sm text-red-600">{errors.name}</p>
         )}
       </div>
 
@@ -202,10 +211,15 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
             errors.phone && touched.phone ? 'border-red-500' : 'border-gray-300'
           )}
           placeholder="Enter your phone number"
+          inputMode="tel"
+          autoComplete="tel"
+          aria-required="true"
+          aria-invalid={!!(errors.phone && touched.phone)}
+          aria-describedby={errors.phone && touched.phone ? 'phone-error' : undefined}
           disabled={loading}
         />
         {errors.phone && touched.phone && (
-          <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
+          <p id="phone-error" role="alert" className="mt-1 text-sm text-red-600">{errors.phone}</p>
         )}
       </div>
 
@@ -225,10 +239,14 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
             errors.email && touched.email ? 'border-red-500' : 'border-gray-300'
           )}
           placeholder="Enter your email address"
+          autoComplete="email"
+          aria-required="true"
+          aria-invalid={!!(errors.email && touched.email)}
+          aria-describedby={errors.email && touched.email ? 'email-error' : undefined}
           disabled={loading}
         />
         {errors.email && touched.email && (
-          <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+          <p id="email-error" role="alert" className="mt-1 text-sm text-red-600">{errors.email}</p>
         )}
       </div>
 
@@ -250,10 +268,13 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
               'w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors',
               errors.date && touched.date ? 'border-red-500' : 'border-gray-300'
             )}
+            aria-required="true"
+            aria-invalid={!!(errors.date && touched.date)}
+            aria-describedby={errors.date && touched.date ? 'date-error' : undefined}
             disabled={loading}
           />
           {errors.date && touched.date && (
-            <p className="mt-1 text-sm text-red-600">{errors.date}</p>
+            <p id="date-error" role="alert" className="mt-1 text-sm text-red-600">{errors.date}</p>
           )}
         </div>
 
@@ -271,6 +292,9 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
               'w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors',
               errors.time && touched.time ? 'border-red-500' : 'border-gray-300'
             )}
+            aria-required="true"
+            aria-invalid={!!(errors.time && touched.time)}
+            aria-describedby={errors.time && touched.time ? 'time-error' : undefined}
             disabled={loading}
           >
             <option value="">Select a time</option>
@@ -281,7 +305,7 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
             ))}
           </select>
           {errors.time && touched.time && (
-            <p className="mt-1 text-sm text-red-600">{errors.time}</p>
+            <p id="time-error" role="alert" className="mt-1 text-sm text-red-600">{errors.time}</p>
           )}
         </div>
       </div>
@@ -315,7 +339,21 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
           rows={4}
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors resize-vertical"
           placeholder="Any specific concerns or requests..."
+          autoComplete="off"
           disabled={loading}
+        />
+      </div>
+
+      {/* Honeypot field (hidden from users) */}
+      <div className="hidden" aria-hidden="true">
+        <label htmlFor="website">Website</label>
+        <input
+          id="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={botTrap}
+          onChange={(e) => setBotTrap(e.target.value)}
         />
       </div>
 

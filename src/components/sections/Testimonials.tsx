@@ -50,7 +50,7 @@ export default function Testimonials() {
   )
 
   return (
-    <section className="section-padding bg-white">
+  <section className="section-padding bg-[#F5F5F5]">
       <div className="container mx-auto container-padding">
         <div className="flex items-end justify-between mb-6">
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900">
@@ -61,7 +61,7 @@ export default function Testimonials() {
         <div className="relative">
           <div
             ref={scrollRef}
-            className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-2"
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-2 no-scrollbar"
           >
             {testimonials.map((t) => (
               <article

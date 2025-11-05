@@ -361,37 +361,7 @@ export default function WhyChooseUs() {
           ))}
         </motion.div>
 
-        {/* Bottom CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-16 text-center bg-gradient-to-r from-primary-600 to-blue-600 rounded-3xl p-8 md:p-12 text-white max-w-4xl mx-auto"
-        >
-          <h3 className="text-2xl md:text-3xl font-bold mb-4">
-            Ready to Experience the Difference?
-          </h3>
-          <p className="text-lg md:text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
-            Join thousands of satisfied patients who trust us with their dental care. Book your consultation today!
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              Book Free Consultation
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-white/10 backdrop-blur-sm border border-white/30 text-white hover:bg-white/20 font-semibold py-4 px-8 rounded-2xl shadow-lg transition-all duration-300"
-            >
-              Call: +91 98765 43210
-            </motion.button>
-          </div>
-        </motion.div>
+        {/* Bottom CTA Section - removed per request */}
       </div>
     </section>
   )

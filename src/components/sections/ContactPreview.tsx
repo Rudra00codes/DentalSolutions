@@ -1,69 +1,59 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaWhatsapp, FaCalendarAlt } from 'react-icons/fa'
-import Button from '@/components/ui/Button'
 import ScrollReveal from '@/components/ui/ScrollReveal'
-import AnimatedCard from '@/components/ui/AnimatedCard'
+import PlaceholderImage from '@/components/ui/PlaceholderImage'
+import { FaMapMarkerAlt, FaPhone } from 'react-icons/fa'
 
 export default function ContactPreview() {
   return (
     <section id="contact" className="section-padding bg-white">
       <div className="container mx-auto container-padding">
-        <ScrollReveal direction="up" className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Get In Touch
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ready to transform your smile? Contact us today to schedule your consultation.
-          </p>
-        </ScrollReveal>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-6 text-center">
-            <FaPhone className="text-3xl text-primary-600 mx-auto mb-4" />
-            <h3 className="font-semibold text-gray-900 mb-2">Call Us</h3>
-            <p className="text-gray-600 text-sm mb-4">+91 97800 25988</p>
-            <a href="tel:+919780025988" aria-label="Call Dental Solutions Zirakpur">
-              <Button size="sm" className="w-full">Call Now</Button>
-            </a>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          {/* Left: Large rounded image */}
+          <div className="overflow-hidden rounded-[32px]">
+            <PlaceholderImage
+              src="/assets/images/Contact/Left_Side_Img.png"
+              alt="Dental procedure at Dental Solutions"
+              width={900}
+              height={700}
+              className="w-full h-auto object-cover"
+              priority
+            />
           </div>
 
-          <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-6 text-center">
-            <FaWhatsapp className="text-3xl text-green-600 mx-auto mb-4" />
-            <h3 className="font-semibold text-gray-900 mb-2">WhatsApp</h3>
-            <p className="text-gray-600 text-sm mb-4">Quick Consultation</p>
-            <a href="https://wa.me/919780025988" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-              <Button size="sm" variant="outline" className="w-full">Chat Now</Button>
-            </a>
-          </div>
+          {/* Right: Heading and contact cards */}
+          <div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Contact Us</h2>
 
-          <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-6 text-center">
-            <FaEnvelope className="text-3xl text-blue-600 mx-auto mb-4" />
-            <h3 className="font-semibold text-gray-900 mb-2">Email Us</h3>
-            <p className="text-gray-600 text-sm mb-4">info@dentalsolutions.com</p>
-            <a href="mailto:info@dentalsolutions.com" aria-label="Email Dental Solutions">
-              <Button size="sm" variant="outline" className="w-full">Send Email</Button>
-            </a>
-          </div>
+            {/* Address card with embedded map */}
+            <div className="bg-blue-50 rounded-3xl p-6 md:p-7 mb-6 shadow-sm">
+              <div className="flex items-center gap-3 mb-3">
+                <FaMapMarkerAlt className="text-primary-600" />
+                <h3 className="text-lg font-semibold">Address</h3>
+              </div>
+              <p className="text-sm text-gray-600 mb-4">SCO 2, Upper Ground Floor, VIP Central, W VIP Rd, opposite Surya Tower, Zirakpur, Punjab 140603</p>
+              <div className="rounded-2xl border border-blue-200 overflow-hidden bg-blue-100">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1471.41461476935!2d76.81028875182146!3d30.636896233841398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390feba7825c9573%3A0xcb62c7743a59716!2sDENTAL%20SOLUTIONS%20%7C%20DENTAL%20CLINIC%20IN%20ZIRAKPUR%20%7C%20DENTAL%20IMPLANT%20CENTRE!5e0!3m2!1sen!2sin!4v1762382152446!5m2!1sen!2sin"
+                  width="100%"
+                  height="280"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  allowFullScreen
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+            </div>
 
-          <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-6 text-center">
-            <FaMapMarkerAlt className="text-3xl text-red-600 mx-auto mb-4" />
-            <h3 className="font-semibold text-gray-900 mb-2">Visit Us</h3>
-            <p className="text-gray-600 text-sm mb-4">Zirakpur, Punjab</p>
-            <a href="https://maps.google.com/?q=Dental+Solutions+Zirakpur" target="_blank" rel="noopener noreferrer" aria-label="Get directions to Dental Solutions Zirakpur">
-              <Button size="sm" variant="outline" className="w-full">Get Directions</Button>
-            </a>
+            {/* Phone card */}
+            <div className="bg-blue-50 rounded-3xl p-6 md:p-7 shadow-sm">
+              <div className="flex items-center gap-3 mb-1">
+                <FaPhone className="text-primary-600" />
+                <h3 className="text-lg font-semibold">Phone Number</h3>
+              </div>
+              <a href="tel:+919888656768" className="text-gray-700 block mt-1">+91 9888656768</a>
+            </div>
           </div>
-        </div>
-
-        <div className="bg-gradient-to-r from-primary-600 to-blue-600 rounded-2xl p-8 text-white text-center">
-          <h3 className="text-2xl font-bold mb-4">Ready to Book Your Appointment?</h3>
-          <p className="text-blue-100 mb-6">Join thousands of satisfied patients who trust us with their dental care.</p>
-          <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900">
-            <FaCalendarAlt className="mr-2" />
-            Book Free Consultation
-          </Button>
         </div>
       </div>
     </section>

@@ -1,88 +1,66 @@
-'use client'
+"use client"
 
-import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { FaTooth, FaUserMd, FaShieldAlt, FaSmile, FaHeart, FaCrown } from 'react-icons/fa'
+import { FaExternalLinkAlt } from 'react-icons/fa'
 import Card from '@/components/ui/Card'
 import PlaceholderImage from '@/components/ui/PlaceholderImage'
-import Button from '@/components/ui/Button'
+import Link from 'next/link'
 
 interface Service {
   id: string
   name: string
   description: string
-  icon: React.ReactNode
   image: string
-  category: string
-  features: string[]
 }
 
 const services: Service[] = [
   {
     id: '1',
     name: 'Dental Implants',
-    description: 'Comprehensive dental care including cleanings, fillings, and preventive treatments for optimal oral health.',
-    icon: <FaTooth className="text-3xl text-primary-600" />,
-    image: '/assets/images/services/Dental_Implants.png',
-    category: 'General',
-    features: ['Regular Checkups', 'Dental Cleanings', 'Cavity Fillings', 'Preventive Care']
+    description:
+      'A dental implant is an artificial tooth root placed into your jaw to support a replacement tooth. Precise, stable, and natural-looking results by specialists.',
+  image: '/assets/images/services/Dental_Implant.png'
   },
   {
     id: '2',
-    name: 'Cosmetic Dentistry',
-    description: 'Transform your smile with advanced cosmetic procedures including whitening, veneers, and smile makeovers.',
-    icon: <FaSmile className="text-3xl text-primary-600" />,
-    image: '/assets/images/services/cosmetic-dentistry.jpg',
-    category: 'Cosmetic',
-    features: ['Teeth Whitening', 'Porcelain Veneers', 'Smile Makeover', 'Bonding']
+    name: 'Dentures',
+    description:
+      'A removable replacement for missing teeth. Designed for comfort and function by experienced prosthodontists.',
+  image: '/assets/images/services/Dentures.png'
   },
   {
     id: '3',
-    name: 'Orthodontics',
-    description: 'Straighten your teeth with modern orthodontic solutions including braces and clear aligners.',
-    icon: <FaShieldAlt className="text-3xl text-primary-600" />,
-    image: '/assets/images/services/orthodontics.jpg',
-    category: 'Orthodontics',
-    features: ['Metal Braces', 'Clear Aligners', 'Retainers', 'Bite Correction']
+    name: 'Braces',
+    description:
+      'Modern braces to straighten and align your teeth. Multiple options available with specialist orthodontists.',
+  image: '/assets/images/services/Braces.png'
   },
   {
     id: '4',
-    name: 'Oral Surgery',
-    description: 'Advanced surgical procedures including extractions, implants, and jaw surgery with minimal discomfort.',
-    icon: <FaUserMd className="text-3xl text-primary-600" />,
-    image: '/assets/images/services/oral-surgery.jpg',
-    category: 'Surgery',
-    features: ['Tooth Extraction', 'Dental Implants', 'Wisdom Teeth', 'Jaw Surgery']
+    name: 'Root Canal Treatment',
+    description:
+      'Root canal therapy to treat infection and save a badly damaged or infected tooth—performed by skilled endodontists.',
+  image: '/assets/images/services/RCT.png'
   },
   {
     id: '5',
-    name: 'Pediatric Dentistry',
-    description: 'Specialized dental care for children in a comfortable, child-friendly environment.',
-    icon: <FaHeart className="text-3xl text-primary-600" />,
-    image: '/assets/images/services/pediatric-dentistry.jpg',
-    category: 'Pediatric',
-    features: ['Child Checkups', 'Fluoride Treatments', 'Sealants', 'Early Orthodontics']
+    name: 'Tooth Extraction',
+    description:
+      'Safe, precise extraction of damaged or decayed teeth using modern techniques for comfort and quick healing.',
+  image: '/assets/images/services/Tooth_Extractn.png'
   },
   {
     id: '6',
-    name: 'Restorative Dentistry',
-    description: 'Restore damaged teeth with crowns, bridges, and advanced restorative techniques.',
-    icon: <FaCrown className="text-3xl text-primary-600" />,
-    image: '/assets/images/services/restorative-dentistry.jpg',
-    category: 'Restorative',
-    features: ['Dental Crowns', 'Bridges', 'Dentures', 'Root Canal']
+    name: 'Teeth Cleaning & Polishing',
+    description:
+      'Gently removes plaque, tartar, and stains using advanced ultrasonic tools for a fresher, healthier smile.',
+  image: '/assets/images/services/Tooth_clean_n_Polish.png'
   }
 ]
 
 export default function ServicesGrid() {
-  const [showAll, setShowAll] = useState(false)
-  const [selectedCategory, setSelectedCategory] = useState('All')
-  
-  const categories = ['All', ...Array.from(new Set(services.map(service => service.category)))]
-  const displayedServices = showAll ? services : services.slice(0, 3)
-  const filteredServices = selectedCategory === 'All' 
-    ? displayedServices 
-    : displayedServices.filter(service => service.category === selectedCategory)
+  // Figma layout shows all services without category filters
+  const filteredServices = services
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -106,45 +84,23 @@ export default function ServicesGrid() {
   }
 
   return (
-    <section id="services" className="section-padding bg-gray-50">
+    <section id="services" className="section-padding bg-[#DBE9FF]">
       <div className="container mx-auto container-padding">
-        {/* Section Header */}
+        {/* Section Header (Figma) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-10"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Our Dental Services
+          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full border border-gray-300/70 bg-white/70 text-sm text-gray-700 mb-3">
+            Our Services
+          </div>
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-wide text-gray-900 uppercase">
+            Dental Treatments
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Comprehensive dental care with advanced technology and personalized treatment plans for every patient.
-          </p>
-        </motion.div>
-
-        {/* Category Filter */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-2 mb-12"
-        >
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                selectedCategory === category
-                  ? 'bg-primary-600 text-white shadow-md'
-                  : 'bg-white text-gray-600 hover:bg-primary-50 hover:text-primary-600 border border-gray-200'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
+          <p className="mt-2 text-gray-700 md:text-lg">At Dental Solutions Zirakpur</p>
         </motion.div>
 
         {/* Services Grid */}
@@ -153,98 +109,51 @@ export default function ServicesGrid() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+          className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mb-8"
         >
           {filteredServices.map((service) => (
             <motion.div key={service.id} variants={itemVariants}>
-              <Card className="h-full group cursor-pointer">
+              <Card className="h-full group cursor-pointer border border-black shadow-sm bg-white rounded-2xl p-3">
                 {/* Service Image */}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative aspect-[16/10] rounded-xl overflow-hidden ring-1 ring-black/10 bg-white">
                   <PlaceholderImage
                     src={service.image}
-                    alt={`${service.name} - Professional dental service at Dental Solutions`}
+                    alt={`${service.name} at Dental Solutions`}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-black/10" />
-                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full p-3 z-10">
-                    {service.icon}
-                  </div>
-                  <div className="absolute top-4 right-4 bg-primary-600 text-white px-3 py-1 rounded-full text-sm font-medium z-10">
-                    {service.category}
-                  </div>
                 </div>
 
                 {/* Service Content */}
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors">
+                <div className="pt-3 px-1 pb-0">
+                  <h3 className="text-xl md:text-[30px] font-extrabold text-gray-900 mb-1 tracking-tight leading-snug">
                     {service.name}
                   </h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">
+                  <p className="text-sm text-gray-700 leading-6">
                     {service.description}
                   </p>
-                  
-                  {/* Features List */}
-                  <ul className="space-y-2 mb-6">
-                    {service.features.slice(0, 3).map((feature, index) => (
-                      <li key={index} className="flex items-center text-sm text-gray-600">
-                        <div className="w-1.5 h-1.5 bg-primary-600 rounded-full mr-3" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Learn More Button */}
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    fullWidth
-                    className="group-hover:bg-primary-600 group-hover:text-white group-hover:border-primary-600 transition-all duration-300"
-                  >
-                    Learn More
-                  </Button>
                 </div>
               </Card>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* View More Button */}
-        {!showAll && services.length > 3 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
+        {/* View More */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center"
+        >
+          <Link
+            href="/appointment"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-gray-300 bg-white/80 text-gray-900 hover:bg-white shadow-sm"
           >
-            <Button
-              onClick={() => setShowAll(true)}
-              size="lg"
-              className="shadow-lg hover:shadow-xl"
-            >
-              View All Services ({services.length - 3} More)
-            </Button>
-          </motion.div>
-        )}
-
-        {/* Show Less Button */}
-        {showAll && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
-          >
-            <Button
-              onClick={() => setShowAll(false)}
-              variant="outline"
-              size="lg"
-            >
-              Show Less
-            </Button>
-          </motion.div>
-        )}
+            View More
+            <FaExternalLinkAlt className="text-sm" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   )
