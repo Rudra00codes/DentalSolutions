@@ -33,10 +33,11 @@ const bentoCards: BentoCard[] = [
   },
   {
     id: '3',
-    title: 'Expert Team',
-    description: 'Highly qualified and experienced dental professionals dedicated to your care.',
+    title: 'iTero Scanner',
+    description: '',
+    image: '/assets/images/WhyChooseUs/box3.png',
     size: 'medium',
-    bgColor: 'bg-gradient-to-br from-purple-100 to-purple-200',
+    bgColor: 'bg-gradient-to-br from-blue-100 to-blue-200',
     textColor: 'text-gray-800'
   },
   {
@@ -49,51 +50,55 @@ const bentoCards: BentoCard[] = [
   },
   {
     id: '5',
-    title: 'Flexible Timings',
-    description: 'Extended hours and flexible appointments to fit your busy schedule.',
+    title: "World's Best iTero Scanner & Microscopic Dentistry",
+    description:
+      'Advanced iTero 3D scans and microscopic precision—no messy impressions, better outcomes.',
     size: 'medium',
-    bgColor: 'bg-gradient-to-br from-orange-100 to-orange-200',
+    bgColor: 'bg-gradient-to-br from-blue-100 to-blue-200',
     textColor: 'text-gray-800'
   },
   {
     id: '6',
-    title: 'Comprehensive Care',
-    description: 'Full range of dental services from preventive care to complex procedures under one roof.',
-    image: '/assets/images/why-choose-us/comprehensive-care.jpg',
+    title: 'Conventional And Basal Implants',
+    description:
+      'Extensive implant stock—faster procedures, multiple brands available, minimal treatment delays.',
+    image: '/assets/images/WhyChooseUs/box6.png',
     size: 'large',
-    bgColor: 'bg-gradient-to-br from-indigo-100 to-indigo-200',
+    bgColor: 'bg-gradient-to-br from-blue-100 to-blue-200',
     textColor: 'text-gray-800'
   },
   {
     id: '7',
-    title: 'Walk-In Treatment',
-    description: 'Walk-in appointments accepted for urgent care and immediate assessments.',
+    title: 'Flexible Timings',
+    description: 'Extended hours and flexible appointments to fit your busy schedule easily.',
     size: 'medium',
-    bgColor: 'bg-gradient-to-br from-pink-100 to-pink-200',
+    bgColor: 'bg-gradient-to-br from-blue-100 to-blue-200',
     textColor: 'text-gray-800'
   },
   {
     id: '8',
-    title: 'Affordable Pricing',
-    description: 'Competitive pricing with flexible payment options and insurance acceptance.',
+    title: 'Full Mouth Rehabs',
+    description:
+      'Comprehensive full-mouth restorations combining multidisciplinary care and lasting beautiful results.',
     size: 'medium',
-    bgColor: 'bg-gradient-to-br from-yellow-100 to-yellow-200',
+    bgColor: 'bg-gradient-to-br from-blue-100 to-blue-200',
     textColor: 'text-gray-800'
   },
   {
     id: '9',
-    title: 'Patient Comfort',
-    description: 'Comfortable environment with amenities designed for patient relaxation and ease.',
+    title: 'Walk-In Treatment',
+    description: 'Walk-in appointments accepted for prompt assessments and immediate urgent care.',
     size: 'medium',
-    bgColor: 'bg-gradient-to-br from-red-100 to-red-200',
+    bgColor: 'bg-gradient-to-br from-blue-100 to-blue-200',
     textColor: 'text-gray-800'
   },
   {
     id: '10',
-    title: 'Follow-up Care',
-    description: 'Comprehensive follow-up care and maintenance programs for lasting results.',
+    title: 'Pediatric Dentist',
+    description:
+      'Child-friendly pediatric dentist providing gentle, patient-focused care for young patients.',
     size: 'medium',
-    bgColor: 'bg-gradient-to-br from-cyan-100 to-cyan-200',
+    bgColor: 'bg-gradient-to-br from-blue-100 to-blue-200',
     textColor: 'text-gray-800'
   }
 ]
@@ -121,8 +126,8 @@ export default function WhyChooseUs() {
   }
 
   const getGridClasses = (cardId: string) => {
-    // Mobile: single column layout
-    const mobileClasses = 'col-span-1 row-span-2'
+    // Mobile: single column layout (no forced row-span for tighter mobile rhythm)
+    const mobileClasses = 'col-span-1'
     
     // Desktop: specific bento grid layout
     const desktopClasses = (() => {
@@ -164,9 +169,9 @@ export default function WhyChooseUs() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-8">
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-8 font-serif">
             Why Choose Us?
           </h2>
         </motion.div>
@@ -177,8 +182,7 @@ export default function WhyChooseUs() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-12 gap-4 md:gap-6 lg:gap-7 max-w-7xl mx-auto"
-          style={{ gridAutoRows: 'minmax(150px, 1fr)' }}
+          className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-12 gap-4 md:gap-6 lg:gap-7 max-w-7xl mx-auto md:auto-rows-[minmax(150px,1fr)]"
         >
           {bentoCards.map((card) => (
             <motion.div
@@ -199,58 +203,98 @@ export default function WhyChooseUs() {
             >
               {/* Special layout for card 1 - image on right */}
               {card.id === '1' ? (
-                <div className="relative z-10 h-full flex items-center p-6">
-                  {/* Text Content on Left */}
-                  <div className="flex-1 pr-6 flex flex-col justify-center">
-                    {/* Description at top */}
-                    <p className="text-sm md:text-base lg:text-lg leading-relaxed text-gray-600 mb-4">
+                <div className="relative z-10 h-full grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 p-4 md:p-6">
+                  {/* Text Column */}
+                  <div className="order-2 md:order-1 flex flex-col justify-between h-full pr-0 md:pr-4">
+                    <p className="text-sm md:text-base leading-6 text-gray-700 max-w-[48ch]">
                       {card.description}
                     </p>
-                    {/* Title below description */}
-                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-gray-900">
+                    <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-gray-900 font-serif mt-6 md:mt-0">
                       {card.title}
                     </h3>
                   </div>
                   
-                  {/* Image on Right */}
+                  {/* Image Column */}
                   {card.image && (
-                    <div className="flex-1 h-full rounded-2xl overflow-hidden relative">
+                    <div className="order-1 md:order-2 relative h-48 md:h-auto rounded-2xl md:rounded-l-[48px] md:rounded-r-2xl overflow-hidden">
+                      <PlaceholderImage
+                        src={card.image}
+                        alt={card.title}
+                        fill
+                        sizes="(min-width: 1024px) 50vw, 100vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
+                </div>
+              ) : card.id === '3' ? (
+                /* Special layout for card 3 - Image only */
+                <div className="relative z-10 h-48 md:h-full p-4">
+                  {card.image && (
+                    <div className="relative w-full h-full rounded-2xl overflow-hidden">
                       <PlaceholderImage
                         src={card.image}
                         alt={card.title}
                         fill
                         sizes="(min-width: 1024px) 33vw, 100vw"
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="object-cover"
                       />
                     </div>
                   )}
                 </div>
               ) : card.id === '2' ? (
                 /* Special layout for card 2 - Painless Dentistry */
-                <div className="relative z-10 h-full flex flex-col justify-center p-6">
+                <div className="relative z-10 h-full flex flex-col justify-start p-6">
                   {/* Large title at top */}
-                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-gray-900 mb-6">
+                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-snug tracking-tight text-gray-900 mb-3 font-serif">
                     {card.title}
                   </h3>
                   
                   {/* Description below */}
-                  <p className="text-sm md:text-base lg:text-lg leading-relaxed text-gray-600">
+                  <p className="text-[13px] md:text-sm lg:text-base leading-6 text-gray-600 max-w-[45ch]">
                     {card.description}
                   </p>
                 </div>
               ) : card.id === '4' ? (
                 /* Special layout for card 4 - Top-Notch Sterilization */
-                <div className="relative z-10 h-full flex flex-col justify-center p-6">
+                <div className="relative z-10 h-full flex flex-col justify-start p-6">
                   {/* Large title at top */}
-                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-gray-900 mb-6">
+                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-snug tracking-tight text-gray-900 mb-3 font-serif">
                     {card.title}
                   </h3>
                   
                   {/* Description at bottom */}
-                  <p className="text-sm md:text-base lg:text-lg leading-relaxed text-gray-600">
+                  <p className="text-[13px] md:text-sm lg:text-base leading-6 text-gray-600 max-w-[45ch]">
                     {card.description}
                   </p>
                 </div>
+              ) : card.id === '6' ? (
+                /* Special layout for card 6 - Implants image flush to bottom-right */
+                <>
+                  <div className="relative z-10 h-full flex flex-col justify-between p-6">
+                    <div className="relative z-10">
+                      <h3 className="text-xl md:text-2xl lg:text-3xl font-bold leading-snug tracking-tight text-gray-900 font-serif mb-2">
+                        {card.title}
+                      </h3>
+                      <p className="text-[13px] md:text-sm lg:text-base leading-6 text-gray-600 max-w-[45ch]">
+                        {card.description}
+                      </p>
+                    </div>
+                  </div>
+                  {card.image && (
+                    <div className="absolute -bottom-6 -right-6 w-80 h-56 md:-bottom-8 md:-right-8 md:w-96 md:h-72 lg:w-96 lg:h-80 pointer-events-none">
+                      <div className="relative w-full h-full">
+                        <PlaceholderImage
+                          src={card.image}
+                          alt={card.title}
+                          fill
+                          sizes="(min-width: 1024px) 33vw, 100vw"
+                          className="object-contain"
+                        />
+                      </div>
+                    </div>
+                  )}
+                </>
               ) : (
                 <>
                   {/* Background Image for other cards */}
@@ -268,30 +312,40 @@ export default function WhyChooseUs() {
                   )}
 
                   {/* Content for other cards */}
-                  <div className={`relative z-10 h-full flex flex-col justify-center ${card.image ? 'text-white' : ''}`}>
-                    <h3 className={`
-                      font-bold mb-3 leading-tight
-                      ${card.id === '6' ? 'text-xl md:text-2xl lg:text-3xl' : 
-                        'text-lg md:text-xl lg:text-2xl'}
-                    `}>
-                      {card.title}
-                    </h3>
-                    
-                    <p className={`
-                      leading-relaxed opacity-80
-                      ${card.id === '6' ? 'text-sm md:text-base lg:text-lg' : 
-                        'text-xs md:text-sm lg:text-base'}
-                    `}>
-                      {card.description}
-                    </p>
-                  </div>
+                  {['7','8','9','10'].includes(card.id) ? (
+                    // Large heading at top, paragraph anchored at bottom
+                    <div className={`relative z-10 h-full min-h-[14rem] md:min-h-0 flex flex-col justify-between ${card.image ? 'text-white' : ''} p-4`}>
+                      <h3 className="font-serif font-bold text-3xl md:text-4xl lg:text-5xl leading-snug tracking-tight text-gray-900">
+                        {card.title}
+                      </h3>
+                      <p className="mt-6 text-[13px] md:text-sm lg:text-base leading-6 text-gray-600 max-w-[48ch]">
+                        {card.description}
+                      </p>
+                    </div>
+                  ) : (
+                    <div className={`relative z-10 h-full flex flex-col justify-start p-1 ${card.image ? 'text-white' : ''}`}>
+                      <h3 className={`
+                        font-bold mb-2 md:mb-3 leading-snug tracking-tight font-serif
+                        ${card.id === '6' ? 'text-xl md:text-2xl lg:text-3xl' : 
+                          'text-lg md:text-xl lg:text-2xl'}
+                      `}>
+                        {card.title}
+                      </h3>
+                      
+                      <p className={`
+                        leading-6 opacity-80 max-w-[45ch]
+                        ${card.id === '6' ? 'text-sm md:text-base lg:text-base' : 
+                          'text-[13px] md:text-sm lg:text-base'}
+                      `}>
+                        {card.description}
+                      </p>
+                    </div>
+                  )}
                 </>
               )}
 
               {/* Decorative Elements for specific cards */}
-              {card.id === '1' && (
-                <div className="absolute top-4 right-4 w-3 h-3 bg-pink-500 rounded-full animate-pulse" />
-              )}
+              
               
               {card.id === '8' && (
                 <div className="absolute bottom-4 left-6">
