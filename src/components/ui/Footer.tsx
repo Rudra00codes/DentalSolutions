@@ -20,14 +20,14 @@ const services = [
 
 const socialLinks = [
   { name: 'Facebook', href: '#', icon: FaFacebook },
-  { name: 'Instagram', href: '#', icon: FaInstagram },
+  { name: 'Instagram', href: 'https://www.instagram.com/dental__solutions_?igsh=MTg3Z2wzenNjNjJoZg==', icon: FaInstagram },
   { name: 'Twitter', href: '#', icon: FaTwitter },
   { name: 'LinkedIn', href: '#', icon: FaLinkedin },
 ]
 
 export default function Footer() {
   return (
-    <footer className="text-gray-800" style={{ backgroundColor: '#dbe9ff' }}>
+    <footer className="text-gray-800 rounded-t-3xl" style={{ backgroundColor: '#dbe9ff' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -44,12 +44,17 @@ export default function Footer() {
             <div className="flex space-x-4">
               {socialLinks.map((social) => {
                 const Icon = social.icon
+                const isExternal = social.href.startsWith('http')
                 return (
                   <Link
                     key={social.name}
                     href={social.href}
                     className="text-gray-500 hover:text-primary-600 transition-colors duration-200"
                     aria-label={social.name}
+                    {...(isExternal && {
+                      target: '_blank',
+                      rel: 'noopener noreferrer'
+                    })}
                   >
                     <Icon className="h-6 w-6" />
                   </Link>
@@ -99,7 +104,8 @@ export default function Footer() {
               <div className="flex items-start space-x-3">
                 <HiLocationMarker className="h-5 w-5 text-primary-600 mt-0.5 flex-shrink-0" />
                 <div className="text-gray-600 text-sm">
-                  <p>123 Main Street</p>
+                  <p>SCO 2, Upper Ground Floor, VIP Central</p>
+                  <p>W VIP Rd, opposite Surya Tower</p>
                   <p>Zirakpur, Punjab 140603</p>
                 </div>
               </div>
@@ -107,10 +113,10 @@ export default function Footer() {
               <div className="flex items-center space-x-3">
                 <HiPhone className="h-5 w-5 text-primary-600 flex-shrink-0" />
                 <Link 
-                  href="tel:+919876543210"
+                  href="tel:+919780025988"
                   className="text-gray-600 hover:text-primary-600 transition-colors text-sm"
                 >
-                  +91 98765 43210
+                  +91 97800 25988
                 </Link>
               </div>
               

@@ -319,4 +319,51 @@ Mobile Font Optimizations for Instrument Serif */
     .hero-content-mobile .hero-heading-with-image {
       margin-bottom: 1.5rem;
     }
+  }  /* 
+Bento Grid Optimizations for Why Choose Us */
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .bento-grid {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(12, minmax(100px, 1fr));
+      gap: 1.5rem;
+      min-height: 120vh;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .bento-grid {
+      gap: 1.75rem;
+      grid-template-rows: repeat(12, minmax(120px, 1fr));
+    }
+  }
+
+  /* Bento card hover effects */
+  .bento-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .bento-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Ensure proper aspect ratios for bento cards */
+  .bento-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .bento-card-content {
+      padding: 2rem;
+    }
   }

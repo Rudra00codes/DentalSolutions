@@ -18,75 +18,82 @@ const bentoCards: BentoCard[] = [
     id: '1',
     title: 'Laughing Gas',
     description: 'Safe nitrous oxide sedation to keep you calm and pain-free.',
-    image: '/assets/images/why-choose-us/laughing-gas.jpg',
-    size: 'medium',
-    bgColor: 'bg-blue-100',
+    image: '/assets/images/WhyChooseUs/box1.png',
+    size: 'large',
+    bgColor: 'bg-gradient-to-br from-blue-100 to-blue-200',
     textColor: 'text-gray-800'
   },
   {
     id: '2',
     title: 'Painless Dentistry',
-    description: 'We combine modern anaesthesia techniques and minimally invasive approaches to make dental care virtually pain-free, so you can start to finish.',
-    size: 'large',
-    bgColor: 'bg-blue-200',
+    description: 'We combine modern anaesthesia techniques and minimally invasive approaches to make dental care virtually pain-free. Your comfort is our priority from start to finish.',
+    size: 'medium',
+    bgColor: 'bg-gradient-to-br from-blue-100 to-blue-200',
     textColor: 'text-gray-800'
   },
   {
     id: '3',
-    title: 'Top-Notch Sterilization',
-    description: 'Stringent sterilization with autoclave and sealed instruments for complete safety.',
+    title: 'Expert Team',
+    description: 'Highly qualified and experienced dental professionals dedicated to your care.',
     size: 'medium',
-    bgColor: 'bg-blue-100',
+    bgColor: 'bg-gradient-to-br from-purple-100 to-purple-200',
     textColor: 'text-gray-800'
   },
   {
     id: '4',
-    title: "World's Best iTero Scanner & Microscopic Dentistry",
-    description: 'Advanced iTero 3D scans and microscopic precision—no messy impressions, better outcomes.',
-    image: '/assets/images/why-choose-us/itero-scanner.jpg',
-    size: 'large',
-    bgColor: 'bg-blue-200',
+    title: 'Top-Notch Sterilization',
+    description: 'Stringent sterilization with autoclaves and sealed instruments for complete safety.',
+    size: 'medium',
+    bgColor: 'bg-gradient-to-br from-blue-100 to-blue-200',
     textColor: 'text-gray-800'
   },
   {
     id: '5',
-    title: 'Conventional And Basal Implants',
-    description: 'Extensive implant stock—faster procedures, multiple brands available, minimal treatment delays.',
+    title: 'Flexible Timings',
+    description: 'Extended hours and flexible appointments to fit your busy schedule.',
     size: 'medium',
-    bgColor: 'bg-blue-100',
+    bgColor: 'bg-gradient-to-br from-orange-100 to-orange-200',
     textColor: 'text-gray-800'
   },
   {
     id: '6',
-    title: 'Flexible Timings',
-    description: 'Extended hours and flexible appointments to fit your busy schedule easily.',
-    size: 'small',
-    bgColor: 'bg-blue-200',
+    title: 'Comprehensive Care',
+    description: 'Full range of dental services from preventive care to complex procedures under one roof.',
+    image: '/assets/images/why-choose-us/comprehensive-care.jpg',
+    size: 'large',
+    bgColor: 'bg-gradient-to-br from-indigo-100 to-indigo-200',
     textColor: 'text-gray-800'
   },
   {
     id: '7',
     title: 'Walk-In Treatment',
-    description: 'Walk-in appointments accepted for prompt assessments and immediate urgent care.',
-    size: 'small',
-    bgColor: 'bg-blue-200',
+    description: 'Walk-in appointments accepted for urgent care and immediate assessments.',
+    size: 'medium',
+    bgColor: 'bg-gradient-to-br from-pink-100 to-pink-200',
     textColor: 'text-gray-800'
   },
   {
     id: '8',
-    title: 'Full Mouth Rehabs',
-    description: 'Comprehensive full-mouth restorations combining multidisciplinary care and lasting beautiful results.',
-    image: '/assets/images/why-choose-us/full-mouth-rehab.jpg',
+    title: 'Affordable Pricing',
+    description: 'Competitive pricing with flexible payment options and insurance acceptance.',
     size: 'medium',
-    bgColor: 'bg-blue-100',
+    bgColor: 'bg-gradient-to-br from-yellow-100 to-yellow-200',
     textColor: 'text-gray-800'
   },
   {
     id: '9',
-    title: 'Pediatric Dentist',
-    description: 'Child-friendly pediatric dentist providing gentle, patient-focused care for young patients.',
+    title: 'Patient Comfort',
+    description: 'Comfortable environment with amenities designed for patient relaxation and ease.',
     size: 'medium',
-    bgColor: 'bg-blue-200',
+    bgColor: 'bg-gradient-to-br from-red-100 to-red-200',
+    textColor: 'text-gray-800'
+  },
+  {
+    id: '10',
+    title: 'Follow-up Care',
+    description: 'Comprehensive follow-up care and maintenance programs for lasting results.',
+    size: 'medium',
+    bgColor: 'bg-gradient-to-br from-cyan-100 to-cyan-200',
     textColor: 'text-gray-800'
   }
 ]
@@ -113,18 +120,39 @@ export default function WhyChooseUs() {
     }
   }
 
-  const getGridClasses = (size: string) => {
-    switch (size) {
-      case 'large':
-        return 'col-span-1 sm:col-span-2 lg:col-span-2 row-span-2'
-      case 'wide':
-        return 'col-span-1 sm:col-span-2 lg:col-span-2 row-span-1'
-      case 'medium':
-        return 'col-span-1 row-span-2'
-      case 'small':
-      default:
-        return 'col-span-1 row-span-1'
-    }
+  const getGridClasses = (cardId: string) => {
+    // Mobile: single column layout
+    const mobileClasses = 'col-span-1 row-span-2'
+    
+    // Desktop: specific bento grid layout
+    const desktopClasses = (() => {
+      switch (cardId) {
+        case '1': // Large card spanning 2 columns, 3 rows
+          return 'md:col-span-2 md:row-span-3'
+        case '2': // Medium card, 3 rows, column 3
+          return 'md:row-span-3 md:col-start-3'
+        case '3': // Medium card, 3 rows, column 2, row 4
+          return 'md:row-span-3 md:col-start-2 md:row-start-4'
+        case '4': // Medium card, 3 rows, column 1, row 4
+          return 'md:row-span-3 md:col-start-1 md:row-start-4'
+        case '5': // Medium card, 3 rows, row 4 (column 3)
+          return 'md:row-span-3 md:row-start-4 md:col-start-3'
+        case '6': // Large card, 6 rows, row 7 (column 1)
+          return 'md:row-span-6 md:row-start-7 md:col-start-1'
+        case '7': // Medium card, 3 rows, row 7 (column 2)
+          return 'md:row-span-3 md:row-start-7 md:col-start-2'
+        case '8': // Medium card, 3 rows, column 2, row 10
+          return 'md:row-span-3 md:col-start-2 md:row-start-10'
+        case '9': // Medium card, 3 rows, column 3, row 7
+          return 'md:row-span-3 md:col-start-3 md:row-start-7'
+        case '10': // Medium card, 3 rows, column 3, row 10
+          return 'md:row-span-3 md:col-start-3 md:row-start-10'
+        default:
+          return 'md:col-span-1 md:row-span-3'
+      }
+    })()
+    
+    return `${mobileClasses} ${desktopClasses}`
   }
 
   return (
@@ -149,7 +177,8 @@ export default function WhyChooseUs() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[180px] sm:auto-rows-[200px] gap-3 sm:gap-4 max-w-7xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-12 gap-4 md:gap-6 lg:gap-7 max-w-7xl mx-auto"
+          style={{ gridAutoRows: 'minmax(150px, 1fr)' }}
         >
           {bentoCards.map((card) => (
             <motion.div
@@ -161,59 +190,114 @@ export default function WhyChooseUs() {
                 transition: { duration: 0.2 }
               }}
               className={`
-                ${getGridClasses(card.size)}
+                ${getGridClasses(card.id)}
                 ${card.bgColor}
                 ${card.textColor}
-                rounded-2xl sm:rounded-3xl p-4 sm:p-6 relative overflow-hidden group cursor-pointer
+                rounded-2xl md:rounded-3xl p-4 md:p-6 relative overflow-hidden group cursor-pointer
                 hover:shadow-xl transition-all duration-300
               `}
             >
-              {/* Background Image */}
-              {card.image && (
-                <div className="absolute inset-0 rounded-3xl overflow-hidden">
-                  <PlaceholderImage
-                    src={card.image}
-                    alt={card.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300" />
+              {/* Special layout for card 1 - image on right */}
+              {card.id === '1' ? (
+                <div className="relative z-10 h-full flex items-center p-6">
+                  {/* Text Content on Left */}
+                  <div className="flex-1 pr-6 flex flex-col justify-center">
+                    {/* Description at top */}
+                    <p className="text-sm md:text-base lg:text-lg leading-relaxed text-gray-600 mb-4">
+                      {card.description}
+                    </p>
+                    {/* Title below description */}
+                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-gray-900">
+                      {card.title}
+                    </h3>
+                  </div>
+                  
+                  {/* Image on Right */}
+                  {card.image && (
+                    <div className="flex-1 h-full rounded-2xl overflow-hidden relative">
+                      <PlaceholderImage
+                        src={card.image}
+                        alt={card.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  )}
                 </div>
+              ) : card.id === '2' ? (
+                /* Special layout for card 2 - Painless Dentistry */
+                <div className="relative z-10 h-full flex flex-col justify-center p-6">
+                  {/* Large title at top */}
+                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-gray-900 mb-6">
+                    {card.title}
+                  </h3>
+                  
+                  {/* Description below */}
+                  <p className="text-sm md:text-base lg:text-lg leading-relaxed text-gray-600">
+                    {card.description}
+                  </p>
+                </div>
+              ) : card.id === '4' ? (
+                /* Special layout for card 4 - Top-Notch Sterilization */
+                <div className="relative z-10 h-full flex flex-col justify-center p-6">
+                  {/* Large title at top */}
+                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-gray-900 mb-6">
+                    {card.title}
+                  </h3>
+                  
+                  {/* Description at bottom */}
+                  <p className="text-sm md:text-base lg:text-lg leading-relaxed text-gray-600">
+                    {card.description}
+                  </p>
+                </div>
+              ) : (
+                <>
+                  {/* Background Image for other cards */}
+                  {card.image && (
+                    <div className="absolute inset-0 rounded-3xl overflow-hidden">
+                      <PlaceholderImage
+                        src={card.image}
+                        alt={card.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300" />
+                    </div>
+                  )}
+
+                  {/* Content for other cards */}
+                  <div className={`relative z-10 h-full flex flex-col justify-center ${card.image ? 'text-white' : ''}`}>
+                    <h3 className={`
+                      font-bold mb-3 leading-tight
+                      ${card.id === '6' ? 'text-xl md:text-2xl lg:text-3xl' : 
+                        'text-lg md:text-xl lg:text-2xl'}
+                    `}>
+                      {card.title}
+                    </h3>
+                    
+                    <p className={`
+                      leading-relaxed opacity-80
+                      ${card.id === '6' ? 'text-sm md:text-base lg:text-lg' : 
+                        'text-xs md:text-sm lg:text-base'}
+                    `}>
+                      {card.description}
+                    </p>
+                  </div>
+                </>
               )}
 
-              {/* Content */}
-              <div className={`relative z-10 h-full flex flex-col ${card.image ? 'text-white' : ''}`}>
-                <h3 className={`
-                  font-bold mb-3 leading-tight
-                  ${card.size === 'large' ? 'text-2xl md:text-3xl' : 
-                    card.size === 'medium' ? 'text-xl md:text-2xl' : 
-                    'text-lg md:text-xl'}
-                `}>
-                  {card.title}
-                </h3>
-                
-                <p className={`
-                  leading-relaxed opacity-80
-                  ${card.size === 'large' ? 'text-base md:text-lg' : 
-                    card.size === 'medium' ? 'text-sm md:text-base' : 
-                    'text-sm'}
-                `}>
-                  {card.description}
-                </p>
-
-                {/* Decorative Elements for specific cards */}
-                {card.id === '1' && (
-                  <div className="absolute top-4 right-4 w-3 h-3 bg-pink-500 rounded-full animate-pulse" />
-                )}
-                
-                {card.id === '8' && (
-                  <div className="absolute bottom-4 left-6">
-                    <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                      <div className="w-8 h-8 bg-white rounded-full" />
-                    </div>
+              {/* Decorative Elements for specific cards */}
+              {card.id === '1' && (
+                <div className="absolute top-4 right-4 w-3 h-3 bg-pink-500 rounded-full animate-pulse" />
+              )}
+              
+              {card.id === '8' && (
+                <div className="absolute bottom-4 left-6">
+                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                    <div className="w-8 h-8 bg-white rounded-full" />
                   </div>
-                )}
-              </div>
+                </div>
+              )}
 
               {/* Hover Effect Overlay */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary-500/0 to-primary-600/0 group-hover:from-primary-500/10 group-hover:to-primary-600/20 transition-all duration-300" />
