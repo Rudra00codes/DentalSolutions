@@ -158,25 +158,25 @@ export default function Header() {
                     className="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-200 py-2 z-50"
                   >
                     <Link
-                      href="tel:+917888327471"
+                      href="tel:+919780025988"
                       onClick={() => setCallDropdownOpen(false)}
                       className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-primary-600 transition-colors"
                     >
                       <HiPhone className="h-4 w-4 mr-3 text-primary-600" />
                       <div>
                         <div className="font-medium">Zirakpur</div>
-                        <div className="text-sm text-gray-500">+91 78883 27471</div>
+                        <div className="text-sm text-gray-500">+91 97800 25988</div>
                       </div>
                     </Link>
                     <Link
-                      href="tel:+919888656768"
+                      href="tel:+919780025988"
                       onClick={() => setCallDropdownOpen(false)}
                       className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-primary-600 transition-colors"
                     >
                       <HiPhone className="h-4 w-4 mr-3 text-primary-600" />
                       <div>
                         <div className="font-medium">Baltana</div>
-                        <div className="text-sm text-gray-500">+91 98886 56768</div>
+                        <div className="text-sm text-gray-500">+91 97800 25988</div>
                       </div>
                     </Link>
                   </motion.div>
@@ -241,14 +241,14 @@ export default function Header() {
                   <div className="px-3">
                     <div className="text-sm font-medium text-gray-700 mb-2">Call Us:</div>
                     <Link 
-                      href="tel:+917888327471" 
+                      href="tel:+919780025988" 
                       onClick={() => setMobileMenuOpen(false)}
                       className="flex items-center px-3 py-2 text-primary-600 hover:text-primary-700 transition-colors bg-gray-50 rounded-lg mb-2"
                     >
                       <HiPhone className="h-4 w-4 mr-3" />
                       <div>
                         <div className="font-medium">Zirakpur</div>
-                        <div className="text-sm text-gray-500">+91 78883 27471</div>
+                        <div className="text-sm text-gray-500">+91 97800 25988</div>
                       </div>
                     </Link>
                     <Link 
@@ -259,7 +259,7 @@ export default function Header() {
                       <HiPhone className="h-4 w-4 mr-3" />
                       <div>
                         <div className="font-medium">Baltana</div>
-                        <div className="text-sm text-gray-500">+91 98886 56768</div>
+                        <div className="text-sm text-gray-500">+91 97800 25988</div>
                       </div>
                     </Link>
                   </div>

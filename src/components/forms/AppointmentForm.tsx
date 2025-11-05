@@ -27,7 +27,7 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
     email: '',
     date: '',
     time: '',
-    branch: 'Zirakpur',
+    branch: 'Zirakpur', 
     message: ''
   })
 
@@ -294,12 +294,12 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
         <select
           id="branch"
           value={formData.branch}
-          onChange={(e) => handleInputChange('branch', e.target.value as 'Zirakpur' | 'Other')}
+          onChange={(e) => handleInputChange('branch', e.target.value as 'Zirakpur' | 'Other' | 'Baltana')}
           className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
           disabled={loading}
         >
           <option value="Zirakpur">Zirakpur</option>
-          <option value="Other">Other</option>
+          <option value="Baltana">Baltana</option>
         </select>
       </div>
 

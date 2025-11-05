@@ -20,7 +20,7 @@ const defaultActions: FloatingAction[] = [
   {
     icon: <FaPhone className="w-5 h-5" />,
     label: 'Call Zirakpur',
-    onClick: () => window.open('tel:+917888327471'),
+    onClick: () => window.open('tel:+919780025988'),
     color: 'bg-blue-600 hover:bg-blue-700',
   },
   {

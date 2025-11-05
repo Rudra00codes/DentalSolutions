@@ -73,8 +73,7 @@ export default function Appointment() {
                   <div>
                     <p className="font-medium text-gray-900">Address</p>
                     <p className="text-gray-600">
-                      Dental Solutions Clinic<br />
-                      Zirakpur, Punjab, India
+                      SCO 2, Upper Ground Floor, VIP Central,<br /> W VIP Rd, opposite Surya Tower, Zirakpur,<br /> Punjab 140603
                     </p>
                   </div>
                 </div>
@@ -84,10 +83,10 @@ export default function Appointment() {
                   <div>
                     <p className="font-medium text-gray-900">Phone</p>
                     <a 
-                      href="tel:+91-XXXXXXXXXX" 
+                      href="tel:+91-9780025988" 
                       className="text-primary-600 hover:text-primary-700 transition-colors"
                     >
-                      +91-XXXXXXXXXX
+                      +91 97800 25988
                     </a>
                   </div>
                 </div>
@@ -171,7 +170,7 @@ export default function Appointment() {
                 If you&apos;re experiencing a dental emergency, please call us immediately for urgent care.
               </p>
               <a
-                href="tel:+91-XXXXXXXXXX"
+                href="tel:+919780025988"
                 className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-colors"
               >
                 <FiPhone className="w-4 h-4" />
