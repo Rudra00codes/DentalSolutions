@@ -103,7 +103,7 @@ export default function HeroSection() {
               {/* Main Image */}
               <div className="relative z-10 h-[600px] w-full">
                 <PlaceholderImage
-                  // src="\public\assets\images\hero\HeroRight_Img.png"
+                  src="/assets/images/hero/HeroRight_Img.png"
                   alt="Confident woman with beautiful smile"
                   fill
                   className="rounded-2xl shadow-2xl object-cover"

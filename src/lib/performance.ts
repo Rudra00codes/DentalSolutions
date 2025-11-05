@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 
 // Hook for intersection observer (lazy loading)
-export function useIntersectionObserver(
+export function useIntersectionObserver<T extends HTMLElement = HTMLElement>(
   options: IntersectionObserverInit = {}
 ) {
   const [isIntersecting, setIsIntersecting] = useState(false)
   const [hasIntersected, setHasIntersected] = useState(false)
-  const ref = useRef<HTMLElement>(null)
+  const ref = useRef<T>(null)
 
   useEffect(() => {
     const element = ref.current

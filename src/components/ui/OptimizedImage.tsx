@@ -33,7 +33,7 @@ export default function OptimizedImage({
 }: OptimizedImageProps) {
   const [imageLoaded, setImageLoaded] = useState(false)
   const [imageError, setImageError] = useState(false)
-  const { ref, hasIntersected } = useIntersectionObserver({
+  const { ref, hasIntersected } = useIntersectionObserver<HTMLDivElement>({
     threshold: 0.1,
     rootMargin: '100px',
   })

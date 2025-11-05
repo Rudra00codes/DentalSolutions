@@ -68,7 +68,18 @@ export default function AnimatedCard({
           transition: { duration: 0.1 },
         },
       }
-    : {}
+    : undefined
+
+  const hoverVariants = getHoverVariants()
+  const allVariants = {
+    ...hoverVariants,
+    ...(tapVariants || {}),
+  }
+
+  // Filter out undefined values
+  const cleanVariants = Object.fromEntries(
+    Object.entries(allVariants).filter(([_, value]) => value !== undefined)
+  )
 
   return (
     <motion.div
@@ -77,7 +88,7 @@ export default function AnimatedCard({
         clickable && 'cursor-pointer',
         className
       )}
-      variants={{ ...getHoverVariants(), ...tapVariants }}
+      variants={Object.keys(cleanVariants).length > 0 ? cleanVariants : undefined}
       whileHover={hoverEffect !== 'none' ? 'hover' : undefined}
       whileTap={clickable ? 'tap' : undefined}
       onClick={onClick}
