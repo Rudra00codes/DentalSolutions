@@ -26,6 +26,15 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
+        serif: ['Instrument Serif', 'Georgia', 'serif'],
+        heading: ['Instrument Serif', 'Georgia', 'serif'],
+      },
+      fontWeight: {
+        'heading': '400',
+        'normal': '400',
+        'medium': '500',
+        'semibold': '600',
+        'bold': '700',
       },
     },
   },

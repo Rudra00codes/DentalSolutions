@@ -16,6 +16,8 @@ const nextConfig = {
   compress: true,
   // Static optimization
   trailingSlash: false,
+  // Font optimization
+  optimizeFonts: true,
   // Bundle analyzer in development
   ...(process.env.ANALYZE === 'true' && {
     webpack: (config) => {
