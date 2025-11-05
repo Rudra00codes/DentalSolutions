@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Instrument Serif Font Loading */
+@font-face {
+  font-family: 'Instrument Serif';
+  src: url('/InstrumentSerif_Font/instrumentserif-regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Instrument Serif';
+  src: url('/InstrumentSerif_Font/instrumentserif-italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -12,31 +29,44 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold text-gray-900;
+    @apply font-heading font-normal text-gray-900;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
   }
   
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl;
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
   }
   
   h2 {
-    @apply text-3xl md:text-4xl lg:text-5xl;
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
   }
   
   h3 {
-    @apply text-2xl md:text-3xl;
+    @apply text-xl sm:text-2xl md:text-3xl;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
   }
   
   h4 {
-    @apply text-xl md:text-2xl;
+    @apply text-lg sm:text-xl md:text-2xl;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
   }
   
   h5 {
-    @apply text-lg md:text-xl;
+    @apply text-base sm:text-lg md:text-xl;
+    line-height: 1.3;
   }
   
   h6 {
-    @apply text-base md:text-lg;
+    @apply text-sm sm:text-base md:text-lg;
+    line-height: 1.35;
   }
 }
 
@@ -93,17 +123,7 @@
   .split-char {
     transform-style: preserve-3d;
   }
-}  /* C
-ustom cursor styles */
-  @media (min-width: 1024px) {
-    * {
-      cursor: none !important;
-    }
-    
-    a, button, [role="button"], .cursor-pointer {
-      cursor: none !important;
-    }
-  }
+}
 
   /* Smooth scrolling for all elements */
   * {
@@ -129,4 +149,174 @@ ustom cursor styles */
     background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
     background-size: 200px 100%;
     animation: shimmer 1.5s infinite;
+  }  /* 
+Mobile Font Optimizations for Instrument Serif */
+  @media (max-width: 640px) {
+    h1, h2, h3, h4, h5, h6 {
+      /* Improve readability on small screens */
+      line-height: 1.25;
+      word-break: break-word;
+      hyphens: auto;
+    }
+    
+    h1 {
+      /* Prevent overly large text on mobile */
+      font-size: clamp(1.875rem, 8vw, 3rem);
+      line-height: 1.1;
+    }
+    
+    h2 {
+      font-size: clamp(1.5rem, 6vw, 2.25rem);
+      line-height: 1.15;
+    }
+    
+    h3 {
+      font-size: clamp(1.25rem, 5vw, 1.875rem);
+      line-height: 1.2;
+    }
+  }
+
+  /* Preload critical font for better performance */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      font-feature-settings: "kern" 1, "liga" 1;
+    }
+  }
+
+  /* Optimize font rendering */
+  h1, h2, h3, h4, h5, h6 {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Instrument Serif 400 Weight Optimizations */
+  .font-heading {
+    font-weight: 400 !important;
+    font-variation-settings: "wght" 400;
+  }
+
+  /* Logo specific styling */
+  .logo-text {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: -0.01em;
+  }  
+/* Hero heading with tooth image optimizations */
+  .hero-heading-with-image {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .hero-heading-with-image {
+      gap: 0.25rem;
+      justify-content: center;
+      text-align: center;
+    }
+    
+    .hero-heading-with-image span {
+      flex-basis: 100%;
+    }
+    
+    .hero-heading-with-image .tooth-icon {
+      margin: 0.5rem auto 0;
+    }
+  }
+
+  @media (min-width: 641px) and (max-width: 768px) {
+    .hero-heading-with-image {
+      gap: 0.75rem;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .hero-heading-with-image {
+      gap: 1rem;
+    }
+  }
+
+  /* Tooth icon subtle drop shadow */
+  .tooth-shadow {
+    filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.18)) 
+            drop-shadow(0 1px 4px rgba(0, 0, 0, 0.12))
+            drop-shadow(0 0 0 rgba(59, 130, 246, 0));
+    transition: filter 0.3s ease;
+  }
+
+  .tooth-shadow:hover {
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.25)) 
+            drop-shadow(0 2px 8px rgba(0, 0, 0, 0.18))
+            drop-shadow(0 0 12px rgba(59, 130, 246, 0.08));
+  }
+
+  /* Enhanced shadow for different screen sizes */
+  @media (max-width: 640px) {
+    .tooth-shadow {
+      filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.12)) 
+              drop-shadow(0 1px 2px rgba(0, 0, 0, 0.08));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .tooth-shadow {
+      filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.18)) 
+              drop-shadow(0 1px 4px rgba(0, 0, 0, 0.12));
+    }
+    
+    .tooth-shadow:hover {
+      filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.25)) 
+              drop-shadow(0 3px 8px rgba(0, 0, 0, 0.18));
+    }
+  }  /*
+ Header loading optimization - ensure header is visible before JS loads */
+  header {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+
+  /* Prevent layout shift during header load */
+  .header-placeholder {
+    height: 80px; /* Match header height */
+    width: 100%;
+  }
+
+  @media (max-width: 1024px) {
+    .header-placeholder {
+      height: 64px; /* Smaller height on mobile */
+    }
+  }
+
+  /* Optimize header backdrop blur for better performance */
+  .header-nav {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }  /* Mobile
+ hero section alignment improvements */
+  @media (max-width: 640px) {
+    .hero-heading-with-image {
+      text-align: center;
+      justify-content: center;
+    }
+    
+    .hero-content-mobile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .hero-content-mobile p {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .hero-content-mobile .hero-heading-with-image {
+      margin-bottom: 1.5rem;
+    }
   }

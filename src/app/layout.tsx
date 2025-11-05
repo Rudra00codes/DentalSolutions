@@ -5,9 +5,9 @@ import { Header, Footer } from '@/components/ui'
 import { generateMetadata, generateLocalBusinessStructuredData, generateWebsiteStructuredData } from '@/lib/seo'
 import WebVitals from '@/components/WebVitals'
 import PageTransition from '@/components/ui/PageTransition'
-import FloatingActionButton from '@/components/ui/FloatingActionButton'
+
 import ScrollToTop from '@/components/ui/ScrollToTop'
-import CustomCursor from '@/components/ui/CustomCursor'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,6 +29,44 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Font Preloading for Performance */}
+        <link
+          rel="preload"
+          href="/InstrumentSerif_Font/instrumentserif-regular.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/InstrumentSerif_Font/instrumentserif-italic.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
+        {/* Prevent header layout shift and optimize loading */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            .header-loading { 
+              opacity: 1 !important; 
+              transform: translateY(0) !important; 
+              visibility: visible !important;
+            }
+            body { margin: 0; padding: 0; }
+            /* Critical header styles for immediate rendering */
+            header { 
+              position: fixed; 
+              top: 0.5rem; 
+              left: 0.5rem; 
+              right: 0.5rem; 
+              z-index: 50; 
+              opacity: 1;
+            }
+            @media (min-width: 640px) {
+              header { top: 1rem; left: 1rem; right: 1rem; }
+            }
+          `
+        }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -44,7 +82,6 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <WebVitals />
-        <CustomCursor />
         <div className="min-h-screen flex flex-col">
           <Header />
           <main className="flex-grow">
@@ -53,7 +90,6 @@ export default function RootLayout({
             </PageTransition>
           </main>
           <Footer />
-          <FloatingActionButton />
           <ScrollToTop />
         </div>
       </body>

@@ -50,7 +50,7 @@ export default function Logo({ className = '', showText = true, size = 'md' }: L
       
       {/* Brand Text */}
       {showText && (
-        <div className={`${sizes[size].text} font-bold text-gray-900`}>
+        <div className={`${sizes[size].text} logo-text text-gray-900`}>
           Dental Solutions
           <div className="text-xs lg:text-sm font-normal text-primary-600">
             Zirakpur

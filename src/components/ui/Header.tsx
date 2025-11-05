@@ -18,11 +18,29 @@ const navigation = [
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [callDropdownOpen, setCallDropdownOpen] = useState(false)
   const pathname = usePathname()
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen)
   }
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (callDropdownOpen) {
+        const target = event.target as HTMLElement
+        if (!target.closest('.call-dropdown')) {
+          setCallDropdownOpen(false)
+        }
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [callDropdownOpen])
 
   // Handle initial scroll to section if hash is present in URL
   useEffect(() => {
@@ -72,12 +90,12 @@ export default function Header() {
 
   return (
     <motion.header 
-      initial={{ opacity: 0, y: -20 }}
+      initial={{ opacity: 0.8, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-2 left-2 right-2 sm:top-4 sm:left-4 sm:right-4 z-50"
+      transition={{ duration: 0.2, ease: "easeOut" }}
+      className="header-loading fixed top-2 left-2 right-2 sm:top-4 sm:left-4 sm:right-4 z-50"
     >
-      <nav className="mx-auto max-w-7xl bg-white/60 backdrop-blur-md shadow-xl border border-gray-200/50 rounded-3xl px-4 sm:px-6 lg:px-8 transition-all duration-300 hover:shadow-2xl">
+      <nav className="header-nav mx-auto max-w-7xl bg-white/60 backdrop-blur-md shadow-xl border border-gray-200/50 rounded-3xl px-4 sm:px-6 lg:px-8 transition-all duration-300 hover:shadow-2xl">
         <div className="flex justify-between items-center h-16 lg:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -109,10 +127,63 @@ export default function Header() {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link href="tel:+919876543210" className="flex items-center text-primary-600 hover:text-primary-700 transition-colors">
-              <HiPhone className="h-5 w-5 mr-2" />
-              <span className="font-medium">Call Us</span>
-            </Link>
+            {/* Call Us Dropdown */}
+            <div className="relative call-dropdown">
+              <button
+                onClick={() => setCallDropdownOpen(!callDropdownOpen)}
+                className="flex items-center text-primary-600 hover:text-primary-700 transition-colors focus:outline-none"
+              >
+                <HiPhone className="h-5 w-5 mr-2" />
+                <span className="font-medium">Call Us</span>
+                <svg
+                  className={`ml-1 h-4 w-4 transition-transform duration-200 ${
+                    callDropdownOpen ? 'rotate-180' : ''
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {/* Dropdown Menu */}
+              <AnimatePresence>
+                {callDropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-lg border border-gray-200 py-2 z-50"
+                  >
+                    <Link
+                      href="tel:+917888327471"
+                      onClick={() => setCallDropdownOpen(false)}
+                      className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-primary-600 transition-colors"
+                    >
+                      <HiPhone className="h-4 w-4 mr-3 text-primary-600" />
+                      <div>
+                        <div className="font-medium">Zirakpur</div>
+                        <div className="text-sm text-gray-500">+91 78883 27471</div>
+                      </div>
+                    </Link>
+                    <Link
+                      href="tel:+919888656768"
+                      onClick={() => setCallDropdownOpen(false)}
+                      className="flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-primary-600 transition-colors"
+                    >
+                      <HiPhone className="h-4 w-4 mr-3 text-primary-600" />
+                      <div>
+                        <div className="font-medium">Baltana</div>
+                        <div className="text-sm text-gray-500">+91 98886 56768</div>
+                      </div>
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
             <Link href="/appointment">
               <Button variant="primary" size="sm">
                 Book Appointment
@@ -166,14 +237,32 @@ export default function Header() {
                 
                 {/* Mobile CTA Buttons */}
                 <div className="pt-4 pb-2 space-y-2">
-                  <Link 
-                    href="tel:+919876543210" 
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center px-3 py-2 text-primary-600 hover:text-primary-700 transition-colors"
-                  >
-                    <HiPhone className="h-5 w-5 mr-2" />
-                    <span className="font-medium">Call Us: +91 98765 43210</span>
-                  </Link>
+                  {/* Mobile Call Numbers */}
+                  <div className="px-3">
+                    <div className="text-sm font-medium text-gray-700 mb-2">Call Us:</div>
+                    <Link 
+                      href="tel:+917888327471" 
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center px-3 py-2 text-primary-600 hover:text-primary-700 transition-colors bg-gray-50 rounded-lg mb-2"
+                    >
+                      <HiPhone className="h-4 w-4 mr-3" />
+                      <div>
+                        <div className="font-medium">Zirakpur</div>
+                        <div className="text-sm text-gray-500">+91 78883 27471</div>
+                      </div>
+                    </Link>
+                    <Link 
+                      href="tel:+919888656768" 
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center px-3 py-2 text-primary-600 hover:text-primary-700 transition-colors bg-gray-50 rounded-lg mb-4"
+                    >
+                      <HiPhone className="h-4 w-4 mr-3" />
+                      <div>
+                        <div className="font-medium">Baltana</div>
+                        <div className="text-sm text-gray-500">+91 98886 56768</div>
+                      </div>
+                    </Link>
+                  </div>
                   <div className="px-3">
                     <Link href="/appointment" onClick={() => setMobileMenuOpen(false)}>
                       <Button variant="primary" size="md" className="w-full">

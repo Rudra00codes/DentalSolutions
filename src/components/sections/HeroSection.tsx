@@ -2,9 +2,8 @@
 
 import { motion } from 'framer-motion'
 import { FaStar, FaArrowRight } from 'react-icons/fa'
-import Button from '@/components/ui/Button'
+import Image from 'next/image'
 import PlaceholderImage from '@/components/ui/PlaceholderImage'
-import SplitText from '@/components/ui/SplitText'
 
 export default function HeroSection() {
   return (
@@ -13,27 +12,42 @@ export default function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-8"
+            transition={{ duration: 0.5, delay: 0.05 }}
+            className="space-y-8 text-center sm:text-left hero-content-mobile"
           >
             {/* Main Heading */}
             <div className="space-y-4">
-              <SplitText
-                text="Smile Confidently, Live Fully 😊"
-                tag="h1"
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight"
-                splitType="words, chars"
-                delay={80}
-                duration={0.6}
-                ease="power2.out"
-                from={{ opacity: 0, y: 30, scale: 0.8 }}
-                to={{ opacity: 1, y: 0, scale: 1 }}
-                threshold={0.3}
-                rootMargin="-20px"
-                textAlign="left"
-              />
+              <motion.h1 
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold italic text-gray-900 leading-tight hero-heading-with-image"
+              >
+                <span className="block sm:inline">Smile Confidently,</span>
+                <span className="block sm:inline">Live Fully</span>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
+                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                  whileHover={{ 
+                    scale: 1.1, 
+                    rotate: 5,
+                    transition: { duration: 0.2, ease: "easeOut" }
+                  }}
+                  transition={{ duration: 0.8, delay: 0.3, ease: "backOut" }}
+                  className="tooth-icon inline-block relative cursor-pointer"
+                >
+                  <Image
+                    src="/assets/images/hero/headingTooth.png"
+                    alt="Dental tooth icon"
+                    width={80}
+                    height={80}
+                    className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 object-contain tooth-shadow"
+                    priority
+                  />
+                </motion.div>
+              </motion.h1>
             </div>
             
             {/* Subtitle */}
@@ -41,17 +55,22 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-lg"
+              className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-lg text-center sm:text-left mx-auto sm:mx-0"
             >
               Advanced, gentle care and personalized treatment for a confident, worry-free smile.
             </motion.p>
             
             {/* Google Reviews */}
-            <motion.div
+            <motion.a
+              href="https://share.google/LDxtBIoHMq4JhsGzq"
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-100"
+              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+              whileTap={{ scale: 0.98 }}
+              className="group flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-100 mx-auto sm:mx-0 max-w-fit cursor-pointer hover:shadow-lg transition-all duration-300"
             >
               <div className="flex items-center gap-2">
                 <div className="flex items-center gap-1">
@@ -65,38 +84,16 @@ export default function HeroSection() {
                 <span className="font-medium">Full 5 Star review on Google</span>
                 <div className="text-sm text-gray-500">(259)</div>
               </div>
-              <FaArrowRight className="text-gray-400 ml-auto" />
-            </motion.div>
-            
-            {/* CTA Buttons */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4"
-            >
-              <Button 
-                size="lg" 
-                className="bg-primary-600 hover:bg-primary-700 text-white shadow-lg hover:shadow-xl"
-              >
-                Book Appointment
-              </Button>
-              
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-gray-300 text-gray-700 hover:bg-gray-50"
-              >
-                Call Us
-              </Button>
-            </motion.div>
+              <FaArrowRight className="text-gray-400 ml-auto transition-transform duration-200 group-hover:translate-x-1" />
+            </motion.a>
+
           </motion.div>
 
           {/* Right Column - Image */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
             className="relative"
           >
             <div className="relative">
@@ -114,28 +111,7 @@ export default function HeroSection() {
               {/* Background Decoration */}
               <div className="absolute -top-4 -right-4 w-full h-full bg-gradient-to-br from-primary-100 to-blue-100 rounded-2xl -z-10"></div>
               
-              {/* Floating Elements */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
-                className="absolute top-8 -left-8 bg-white p-4 rounded-xl shadow-lg"
-              >
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  <span className="text-sm font-medium text-gray-700">Painless Treatment</span>
-                </div>
-              </motion.div>
-              
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
-                className="absolute bottom-8 -right-8 bg-white p-4 rounded-xl shadow-lg"
-              >
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                  <span className="text-sm font-medium text-gray-700">Advanced Technology</span>
-                </div>
-              </motion.div>
+
             </div>
           </motion.div>
         </div>

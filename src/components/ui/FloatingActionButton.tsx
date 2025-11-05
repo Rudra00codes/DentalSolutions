@@ -19,14 +19,14 @@ interface FloatingActionButtonProps {
 const defaultActions: FloatingAction[] = [
   {
     icon: <FaPhone className="w-5 h-5" />,
-    label: 'Call Us',
-    onClick: () => window.open('tel:+91-XXXXXXXXXX'),
+    label: 'Call Zirakpur',
+    onClick: () => window.open('tel:+917888327471'),
     color: 'bg-blue-600 hover:bg-blue-700',
   },
   {
     icon: <FaWhatsapp className="w-5 h-5" />,
     label: 'WhatsApp',
-    onClick: () => window.open('https://wa.me/91XXXXXXXXXX'),
+    onClick: () => window.open('https://wa.me/917888327471'),
     color: 'bg-green-600 hover:bg-green-700',
   },
   {
