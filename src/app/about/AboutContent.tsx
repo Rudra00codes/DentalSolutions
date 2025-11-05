@@ -135,6 +135,7 @@ export default function AboutContent() {
                   src={ASSET_PATHS.HERO.OFFICE}
                   alt="Modern dental clinic interior at Dental Solutions"
                   fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
                   className="object-cover"
                   priority
                 />
@@ -281,6 +282,7 @@ export default function AboutContent() {
                   src={ASSET_PATHS.HERO.OFFICE}
                   alt="Main treatment room with modern dental equipment"
                   fill
+                  sizes="(min-width: 1024px) 66vw, 100vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -304,6 +306,7 @@ export default function AboutContent() {
                   src={ASSET_PATHS.HERO.BACKGROUND}
                   alt="Comfortable waiting area with modern seating"
                   fill
+                  sizes="(min-width: 1024px) 33vw, 100vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -319,6 +322,7 @@ export default function AboutContent() {
                   src={ASSET_PATHS.TESTIMONIALS.BACKGROUND}
                   alt="Reception area with friendly staff"
                   fill
+                  sizes="(min-width: 1024px) 33vw, 100vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">

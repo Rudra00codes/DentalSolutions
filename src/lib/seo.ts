@@ -56,7 +56,7 @@ export function generateLocalBusinessStructuredData() {
     name: 'Dental Solutions',
     description: 'Professional dental care with advanced technology and painless treatments in Zirakpur, Punjab.',
     url: process.env.NEXT_PUBLIC_BASE_URL || 'https://dentalsolutions.com',
-    telephone: '+91-XXXXXXXXXX',
+    telephone: '+91 97800 25988',
     email: 'info@dentalsolutions.com',
     address: {
       '@type': 'PostalAddress',

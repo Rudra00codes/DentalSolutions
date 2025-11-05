@@ -12,6 +12,7 @@ interface PlaceholderImageProps {
   priority?: boolean
   width?: number
   height?: number
+  sizes?: string
 }
 
 export default function PlaceholderImage({ 
@@ -21,7 +22,8 @@ export default function PlaceholderImage({
   className = '', 
   priority = false,
   width,
-  height
+  height,
+  sizes
 }: PlaceholderImageProps) {
   const [imageError, setImageError] = useState(false)
   const [imageLoading, setImageLoading] = useState(true)
@@ -56,6 +58,7 @@ export default function PlaceholderImage({
     priority,
     onError: handleImageError,
     onLoad: handleImageLoad,
+    sizes,
     ...(fill ? { fill: true } : { width, height })
   } as any
 

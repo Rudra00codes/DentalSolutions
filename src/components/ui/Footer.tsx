@@ -5,9 +5,9 @@ import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from 'react-icons/fa'
 const quickLinks = [
   { name: 'Home', href: '/' },
   { name: 'About Us', href: '/about' },
-  { name: 'Services', href: '/services' },
+  { name: 'Services', href: '/#services' },
   { name: 'Book Appointment', href: '/appointment' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Contact', href: '/#contact' },
 ]
 
 const services = [

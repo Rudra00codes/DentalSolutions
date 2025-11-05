@@ -23,29 +23,37 @@ export default function ContactPreview() {
           <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-6 text-center">
             <FaPhone className="text-3xl text-primary-600 mx-auto mb-4" />
             <h3 className="font-semibold text-gray-900 mb-2">Call Us</h3>
-            <p className="text-gray-600 text-sm mb-4">+91 98765 43210</p>
-            <Button size="sm" className="w-full">Call Now</Button>
+            <p className="text-gray-600 text-sm mb-4">+91 97800 25988</p>
+            <a href="tel:+919780025988" aria-label="Call Dental Solutions Zirakpur">
+              <Button size="sm" className="w-full">Call Now</Button>
+            </a>
           </div>
 
           <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-6 text-center">
             <FaWhatsapp className="text-3xl text-green-600 mx-auto mb-4" />
             <h3 className="font-semibold text-gray-900 mb-2">WhatsApp</h3>
             <p className="text-gray-600 text-sm mb-4">Quick Consultation</p>
-            <Button size="sm" variant="outline" className="w-full">Chat Now</Button>
+            <a href="https://wa.me/919780025988" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+              <Button size="sm" variant="outline" className="w-full">Chat Now</Button>
+            </a>
           </div>
 
           <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-6 text-center">
             <FaEnvelope className="text-3xl text-blue-600 mx-auto mb-4" />
             <h3 className="font-semibold text-gray-900 mb-2">Email Us</h3>
             <p className="text-gray-600 text-sm mb-4">info@dentalsolutions.com</p>
-            <Button size="sm" variant="outline" className="w-full">Send Email</Button>
+            <a href="mailto:info@dentalsolutions.com" aria-label="Email Dental Solutions">
+              <Button size="sm" variant="outline" className="w-full">Send Email</Button>
+            </a>
           </div>
 
           <div className="bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-6 text-center">
             <FaMapMarkerAlt className="text-3xl text-red-600 mx-auto mb-4" />
             <h3 className="font-semibold text-gray-900 mb-2">Visit Us</h3>
             <p className="text-gray-600 text-sm mb-4">Zirakpur, Punjab</p>
-            <Button size="sm" variant="outline" className="w-full">Get Directions</Button>
+            <a href="https://maps.google.com/?q=Dental+Solutions+Zirakpur" target="_blank" rel="noopener noreferrer" aria-label="Get directions to Dental Solutions Zirakpur">
+              <Button size="sm" variant="outline" className="w-full">Get Directions</Button>
+            </a>
           </div>
         </div>
 

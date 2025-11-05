@@ -219,6 +219,7 @@ export default function WhyChooseUs() {
                         src={card.image}
                         alt={card.title}
                         fill
+                        sizes="(min-width: 1024px) 33vw, 100vw"
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
@@ -259,6 +260,7 @@ export default function WhyChooseUs() {
                         src={card.image}
                         alt={card.title}
                         fill
+                        sizes="(min-width: 1024px) 33vw, 100vw"
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300" />
