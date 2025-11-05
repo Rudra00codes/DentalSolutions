@@ -1,18 +1,19 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { HiMenu, HiX, HiPhone } from 'react-icons/hi'
 import Button from './Button'
+import Logo from './Logo'
 import { cn } from '@/lib/utils'
 
 const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Services', href: '/services' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Home', href: '/', type: 'page' },
+  { name: 'About', href: '/about', type: 'page' },
+  { name: 'Services', href: '/#services', type: 'section' },
+  { name: 'Contact', href: '/#contact', type: 'section' },
 ]
 
 export default function Header() {
@@ -23,16 +24,65 @@ export default function Header() {
     setMobileMenuOpen(!mobileMenuOpen)
   }
 
+  // Handle initial scroll to section if hash is present in URL
+  useEffect(() => {
+    const hash = window.location.hash
+    if (hash && pathname === '/') {
+      const sectionId = hash.substring(1) // Remove the '#'
+      // Delay to ensure page is fully loaded
+      setTimeout(() => {
+        scrollToSection(sectionId)
+      }, 100)
+    }
+  }, [pathname])
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      // Calculate offset for floating header - accounting for header height + padding
+      const headerOffset = 140
+      const elementPosition = element.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
+    }
+  }
+
+  const handleNavClick = (item: typeof navigation[0], e: React.MouseEvent) => {
+    if (item.type === 'section') {
+      e.preventDefault()
+      
+      // If we're not on the home page, navigate to home first
+      if (pathname !== '/') {
+        window.location.href = item.href
+        return
+      }
+      
+      // Extract section ID from href (e.g., '/#services' -> 'services')
+      const sectionId = item.href.split('#')[1]
+      scrollToSection(sectionId)
+      
+      // Close mobile menu if open
+      setMobileMenuOpen(false)
+    }
+  }
+
   return (
-    <header className="bg-white shadow-lg sticky top-0 z-50">
-      <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <motion.header 
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="fixed top-2 left-2 right-2 sm:top-4 sm:left-4 sm:right-4 z-50"
+    >
+      <nav className="mx-auto max-w-7xl bg-white/60 backdrop-blur-md shadow-xl border border-gray-200/50 rounded-3xl px-4 sm:px-6 lg:px-8 transition-all duration-300 hover:shadow-2xl">
         <div className="flex justify-between items-center h-16 lg:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center">
-              <div className="text-2xl lg:text-3xl font-bold text-primary-600">
-                Dental Solutions
-              </div>
+            <Link href="/">
+              <Logo size="md" showText={true} />
             </Link>
           </div>
 
@@ -43,6 +93,7 @@ export default function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
+                  onClick={(e) => handleNavClick(item, e)}
                   className={cn(
                     'px-3 py-2 text-sm font-medium transition-colors duration-200 hover:text-primary-600',
                     pathname === item.href
@@ -96,12 +147,12 @@ export default function Header() {
               transition={{ duration: 0.2 }}
               className="md:hidden overflow-hidden"
             >
-              <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
+              <div className="px-2 pt-2 pb-3 space-y-1 bg-white/95 backdrop-blur-md border-t border-gray-200/50 rounded-b-3xl">
                 {navigation.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={(e) => handleNavClick(item, e)}
                     className={cn(
                       'block px-3 py-2 text-base font-medium rounded-md transition-colors duration-200',
                       pathname === item.href
@@ -136,6 +187,6 @@ export default function Header() {
           )}
         </AnimatePresence>
       </nav>
-    </header>
+    </motion.header>
   )
 }

@@ -1,0 +1,5 @@
+export { default as HeroSection } from './HeroSection'
+export { default as ServicesGrid } from './ServicesGrid'
+export { default as WhyChooseUs } from './WhyChooseUs'
+export { default as Testimonials } from './Testimonials'
+export { default as ContactPreview } from './ContactPreview'

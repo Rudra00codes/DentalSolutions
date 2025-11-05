@@ -51,7 +51,7 @@ export default function Button({
         className
       )}
       disabled={disabled || loading}
-      {...props}
+      {...(props as any)}
     >
       {loading && (
         <div className="absolute inset-0 flex items-center justify-center">

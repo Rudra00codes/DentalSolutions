@@ -53,7 +53,7 @@ export default function Card({
       baseClasses,
       variants[variant],
       hover && hoverEffects[variant],
-      onClick && 'cursor-pointer',
+      !!onClick && 'cursor-pointer',
       className
     ),
     onClick
