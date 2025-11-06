@@ -155,7 +155,7 @@ export default function AboutContent() {
           </motion.div>
 
           {/* Team grid – Figma style: image on top, name + designation below */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-5xl mx-auto">
             {teamMembers.map((member, index) => (
               <motion.div
                 key={member.id}
@@ -172,14 +172,14 @@ export default function AboutContent() {
                       alt={`${member.name} - ${member.title}`}
                       fill
                       className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
-                      sizes="(min-width: 1024px) 420px, (min-width: 768px) 45vw, 100vw"
+                      sizes="(min-width: 1024px) 240px, (min-width: 768px) 25vw, 50vw"
                     />
                   </div>
 
                   {/* Name and designation */}
-                  <div className="mt-4">
-                    <h3 className="font-serif text-[28px] md:text-[32px] text-gray-900 leading-snug">{member.name}</h3>
-                    <p className="text-[13px] md:text-[15px] text-gray-600">{member.title}</p>
+                  <div className="mt-3">
+                    <h3 className="font-serif text-base md:text-lg text-gray-900 leading-snug">{member.name}</h3>
+                    <p className="text-xs md:text-sm text-gray-600 mt-1">{member.title}</p>
                   </div>
                 </div>
               </motion.div>
