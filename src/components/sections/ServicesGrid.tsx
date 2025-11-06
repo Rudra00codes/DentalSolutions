@@ -1,10 +1,10 @@
 "use client"
 
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useState } from 'react'
 import { FaExternalLinkAlt } from 'react-icons/fa'
 import Card from '@/components/ui/Card'
 import PlaceholderImage from '@/components/ui/PlaceholderImage'
-import Link from 'next/link'
 
 interface Service {
   id: string
@@ -61,6 +61,8 @@ const services: Service[] = [
 export default function ServicesGrid() {
   // Figma layout shows all services without category filters
   const filteredServices = services
+  const [showAll, setShowAll] = useState(false)
+  const visibleServices = showAll ? filteredServices : filteredServices.slice(0, 3)
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -103,19 +105,27 @@ export default function ServicesGrid() {
           <p className="mt-2 text-gray-700 md:text-lg">At Dental Solutions Zirakpur</p>
         </motion.div>
 
-        {/* Services Grid */}
+        {/* Services Grid (initially 3 items in one row on large screens) */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mb-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 mb-8"
         >
-          {filteredServices.map((service) => (
-            <motion.div key={service.id} variants={itemVariants}>
-              <Card className="h-full group cursor-pointer border border-black shadow-sm bg-white rounded-2xl p-3">
+          <AnimatePresence>
+          {visibleServices.map((service) => (
+            <motion.div
+              key={service.id}
+              variants={itemVariants}
+              layout
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+            >
+              <Card className="h-full group cursor-pointer border border-black shadow-sm bg-white rounded-xl p-2 md:p-3">
                 {/* Service Image */}
-                <div className="relative aspect-[16/10] rounded-xl overflow-hidden ring-1 ring-black/10 bg-white">
+                <div className="relative aspect-[16/9] rounded-lg overflow-hidden ring-1 ring-black/10 bg-white">
                   <PlaceholderImage
                     src={service.image}
                     alt={`${service.name} at Dental Solutions`}
@@ -125,35 +135,40 @@ export default function ServicesGrid() {
                 </div>
 
                 {/* Service Content */}
-                <div className="pt-3 px-1 pb-0">
-                  <h3 className="text-xl md:text-[30px] font-extrabold text-gray-900 mb-1 tracking-tight leading-snug">
+                <div className="pt-2 px-1 pb-0">
+                  <h3 className="text-lg md:text-2xl font-extrabold text-gray-900 mb-1 tracking-tight leading-snug">
                     {service.name}
                   </h3>
-                  <p className="text-sm text-gray-700 leading-6">
+                  <p className="text-[13px] md:text-sm text-gray-700 leading-6">
                     {service.description}
                   </p>
                 </div>
               </Card>
             </motion.div>
           ))}
+          </AnimatePresence>
         </motion.div>
 
         {/* View More */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
-        >
-          <Link
-            href="/appointment"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-gray-300 bg-white/80 text-gray-900 hover:bg-white shadow-sm"
+        {!showAll && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
           >
-            View More
-            <FaExternalLinkAlt className="text-sm" />
-          </Link>
-        </motion.div>
+            <button
+              type="button"
+              aria-expanded={showAll}
+              onClick={() => setShowAll(true)}
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-gray-300 bg-white/80 text-gray-900 hover:bg-white shadow-sm"
+            >
+              View More
+              <FaExternalLinkAlt className="text-sm" />
+            </button>
+          </motion.div>
+        )}
       </div>
     </section>
   )

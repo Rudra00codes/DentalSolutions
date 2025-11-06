@@ -129,7 +129,7 @@ export default function AboutContent() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative flex justify-center"
+              className="relative flex justify-center overflow-hidden px-4 py-8 lg:py-0"
             >
               <BounceCards
                 images={[
@@ -137,18 +137,17 @@ export default function AboutContent() {
                   '/assets/images/AboutUs/Image2.png',
                   '/assets/images/AboutUs/Image3.png',
                 ]}
-                containerWidth={560}
-                containerHeight={300}
+                className="w-full max-w-[280px] h-[200px] sm:max-w-[380px] sm:h-[260px] md:max-w-[480px] md:h-[300px] lg:max-w-[560px] lg:h-[340px]"
                 animationDelay={0.4}
                 animationStagger={0.12}
-                easeType="easeOut"
+                easeType="power3.out"
                 transformStyles={[
-                  'rotate(6deg) translate(-80px)',
-                  'rotate(0deg)',
-                  'rotate(-6deg) translate(80px)'
+                  'rotate(6deg) translate(-40px) scale(0.9)',
+                  'rotate(0deg) scale(1)',
+                  'rotate(-6deg) translate(40px) scale(0.9)'
                 ]}
-                enableHover={false}
-                className="w-full md:w-auto"
+                enableHover
+                stackOnMobile
               />
             </motion.div>
           </div>

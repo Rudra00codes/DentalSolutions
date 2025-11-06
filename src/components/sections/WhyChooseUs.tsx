@@ -344,17 +344,6 @@ export default function WhyChooseUs() {
                 </>
               )}
 
-              {/* Decorative Elements for specific cards */}
-              
-              
-              {card.id === '8' && (
-                <div className="absolute bottom-4 left-6">
-                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                    <div className="w-8 h-8 bg-white rounded-full" />
-                  </div>
-                </div>
-              )}
-
               {/* Hover Effect Overlay */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary-500/0 to-primary-600/0 group-hover:from-primary-500/10 group-hover:to-primary-600/20 transition-all duration-300" />
             </motion.div>

@@ -11,11 +11,12 @@ const quickLinks = [
 ]
 
 const services = [
-  { name: 'General Dentistry', href: '/services#general' },
-  { name: 'Cosmetic Dentistry', href: '/services#cosmetic' },
-  { name: 'Orthodontics', href: '/services#orthodontics' },
-  { name: 'Oral Surgery', href: '/services#surgery' },
-  { name: 'Dental Implants', href: '/services#implants' },
+  { name: 'Dental Implants', href: '/#services' },
+  { name: 'Dentures', href: '/#services' },
+  { name: 'Braces', href: '/#services' },
+  { name: 'Root Canal Treatment', href: '/#services' },
+  { name: 'Tooth Extraction', href: '/#services' },
+  { name: 'Teeth Cleaning & Polishing', href: '/#services' },
 ]
 
 const socialLinks = [
@@ -27,7 +28,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="text-gray-800 rounded-t-3xl" style={{ backgroundColor: '#dbe9ff' }}>
+    <footer className="text-gray-800 rounded-t-[50px]" style={{ backgroundColor: '#dbe9ff' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -157,7 +158,7 @@ export default function Footer() {
               <Link href="/terms" className="text-blue-100 hover:text-white transition-colors">
                 Terms of Service
               </Link>
-              <Link href="/sitemap" className="text-blue-100 hover:text-white transition-colors">
+              <Link href="/sitemap-page" className="text-blue-100 hover:text-white transition-colors">
                 Sitemap
               </Link>
             </div>

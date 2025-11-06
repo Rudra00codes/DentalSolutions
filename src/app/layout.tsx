@@ -5,6 +5,7 @@ import { Header, Footer } from '@/components/ui'
 import { generateMetadata, generateLocalBusinessStructuredData, generateWebsiteStructuredData } from '@/lib/seo'
 import WebVitals from '@/components/WebVitals'
 import PageTransition from '@/components/ui/PageTransition'
+import WhatsAppFloatingButton from '@/components/ui/WhatsAppFloatingButton'
 
 import ScrollToTop from '@/components/ui/ScrollToTop'
 
@@ -98,6 +99,7 @@ export default function RootLayout({
           </main>
           <Footer />
           <ScrollToTop />
+          <WhatsAppFloatingButton />
         </div>
       </body>
     </html>
