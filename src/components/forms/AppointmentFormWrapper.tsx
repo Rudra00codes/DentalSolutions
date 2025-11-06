@@ -63,7 +63,7 @@ export default function AppointmentFormWrapper() {
                       </Button>
                       <div className="flex items-center gap-4 text-sm text-red-600">
                         <a
-                          href="tel:+91-XXXXXXXXXX"
+                          href="tel:+919780025988"
                           className="flex items-center gap-1 hover:text-red-800 transition-colors"
                         >
                           <FiPhone className="w-4 h-4" />
@@ -157,7 +157,7 @@ export default function AppointmentFormWrapper() {
                 <p className="text-sm text-gray-600 mb-3">Need immediate assistance?</p>
                 <div className="flex justify-center gap-6">
                   <a
-                    href="tel:+91-XXXXXXXXXX"
+                    href="tel:+919780025988"
                     className="flex items-center gap-2 text-primary-600 hover:text-primary-700 transition-colors"
                   >
                     <FiPhone className="w-4 h-4" />
