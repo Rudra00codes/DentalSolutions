@@ -269,20 +269,25 @@ export default function WhyChooseUs() {
                   </p>
                 </div>
               ) : card.id === '6' ? (
-                /* Special layout for card 6 - Implants image flush to bottom-right */
+                /* Special layout for card 6 - improved mobile readability */
                 <>
-                  <div className="relative z-10 h-full flex flex-col justify-between p-6">
-                    <div className="relative z-10">
-                      <h3 className="text-xl md:text-2xl lg:text-3xl font-bold leading-snug tracking-tight text-gray-900 font-serif mb-2">
-                        {card.title}
-                      </h3>
-                      <p className="text-[13px] md:text-sm lg:text-base leading-6 text-gray-600 max-w-[45ch]">
-                        {card.description}
-                      </p>
+                  {/* Text block with blurred backdrop on mobile */}
+                  <div className="relative z-10 h-full flex flex-col justify-between p-4 md:p-6">
+                    <div className="relative max-w-[72%] sm:max-w-[66%] md:max-w-none text-left">
+                      {/* Subtle blurred panel only on mobile to improve contrast */}
+                      <div className="absolute -inset-2 rounded-xl bg-white/70 backdrop-blur-sm shadow-sm md:hidden" />
+                      <div className="relative z-10">
+                        <h3 className="text-xl md:text-2xl lg:text-3xl font-bold leading-snug tracking-tight text-gray-900 font-serif mb-2">
+                          {card.title}
+                        </h3>
+                        <p className="text-[13px] md:text-sm lg:text-base leading-6 text-gray-700">
+                          {card.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
                   {card.image && (
-                    <div className="absolute -bottom-6 -right-6 w-80 h-56 md:-bottom-8 md:-right-8 md:w-96 md:h-72 lg:w-96 lg:h-80 pointer-events-none">
+                    <div className="absolute -bottom-1 -right-1 w-56 h-40 sm:w-64 sm:h-44 md:-bottom-8 md:-right-8 md:w-96 md:h-72 lg:w-96 lg:h-80 pointer-events-none">
                       <div className="relative w-full h-full">
                         <PlaceholderImage
                           src={card.image}
