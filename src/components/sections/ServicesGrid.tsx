@@ -86,7 +86,13 @@ export default function ServicesGrid() {
   }
 
   return (
-    <section id="services" className="section-padding bg-[#DBE9FF]">
+    <section 
+      id="services" 
+      className="section-padding"
+      style={{ 
+        backgroundImage: 'linear-gradient(120deg, #c4d9fb8a 0%, #cdeefcff 100%)' 
+      }}
+    >
       <div className="container mx-auto container-padding">
         {/* Section Header (Figma) */}
         <motion.div
