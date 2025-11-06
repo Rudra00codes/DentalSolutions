@@ -4,6 +4,8 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { AppointmentData } from '@/types'
 import Button from '@/components/ui/Button'
+import DatePicker from '@/components/ui/DatePicker'
+import TimePicker from '@/components/ui/TimePicker'
 import { cn } from '@/lib/utils'
 
 interface FormErrors {
@@ -153,18 +155,13 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
     return today.toISOString().split('T')[0]
   }
 
-  // Generate time slots
-  const timeSlots = [
-    '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
-    '12:00', '12:30', '14:00', '14:30', '15:00', '15:30',
-    '16:00', '16:30', '17:00', '17:30', '18:00'
-  ]
+
 
   return (
     <motion.form
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.2 }}
       onSubmit={handleSubmit}
       className="space-y-6"
     >
@@ -255,23 +252,20 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
         {/* Date Field */}
         <div>
           <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-2">
-            Preferred Date *
+            📅 Preferred Date *
           </label>
-          <input
-            type="date"
+          <DatePicker
             id="date"
             value={formData.date}
-            onChange={(e) => handleInputChange('date', e.target.value)}
+            onChange={(date) => handleInputChange('date', date)}
             onBlur={() => handleBlur('date')}
-            min={getMinDate()}
-            className={cn(
-              'w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors',
-              errors.date && touched.date ? 'border-red-500' : 'border-gray-300'
-            )}
-            aria-required="true"
+            minDate={getMinDate()}
+            placeholder="Select your preferred date"
+            disabled={loading}
+            error={!!(errors.date && touched.date)}
+            aria-required={true}
             aria-invalid={!!(errors.date && touched.date)}
             aria-describedby={errors.date && touched.date ? 'date-error' : undefined}
-            disabled={loading}
           />
           {errors.date && touched.date && (
             <p id="date-error" role="alert" className="mt-1 text-sm text-red-600">{errors.date}</p>
@@ -281,29 +275,20 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
         {/* Time Field */}
         <div>
           <label htmlFor="time" className="block text-sm font-medium text-gray-700 mb-2">
-            Preferred Time *
+            🕐 Preferred Time *
           </label>
-          <select
+          <TimePicker
             id="time"
             value={formData.time}
-            onChange={(e) => handleInputChange('time', e.target.value)}
+            onChange={(time) => handleInputChange('time', time)}
             onBlur={() => handleBlur('time')}
-            className={cn(
-              'w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors',
-              errors.time && touched.time ? 'border-red-500' : 'border-gray-300'
-            )}
-            aria-required="true"
+            placeholder="Select time (HH:MM)"
+            disabled={loading}
+            error={!!(errors.time && touched.time)}
+            aria-required={true}
             aria-invalid={!!(errors.time && touched.time)}
             aria-describedby={errors.time && touched.time ? 'time-error' : undefined}
-            disabled={loading}
-          >
-            <option value="">Select a time</option>
-            {timeSlots.map((time) => (
-              <option key={time} value={time}>
-                {time}
-              </option>
-            ))}
-          </select>
+          />
           {errors.time && touched.time && (
             <p id="time-error" role="alert" className="mt-1 text-sm text-red-600">{errors.time}</p>
           )}
@@ -313,18 +298,31 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
       {/* Branch Selection */}
       <div>
         <label htmlFor="branch" className="block text-sm font-medium text-gray-700 mb-2">
-          Branch Location *
+          📍 Branch Location *
         </label>
-        <select
-          id="branch"
-          value={formData.branch}
-          onChange={(e) => handleInputChange('branch', e.target.value as 'Zirakpur' | 'Other')}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-          disabled={loading}
-        >
-          <option value="Zirakpur">Zirakpur</option>
-          <option value="Other">Other</option>
-        </select>
+        <div className="relative">
+          <select
+            id="branch"
+            value={formData.branch}
+            onChange={(e) => handleInputChange('branch', e.target.value as 'Zirakpur' | 'Baltana')}
+            className={cn(
+              'w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200',
+              'appearance-none cursor-pointer bg-white',
+              'hover:border-primary-400 hover:shadow-sm',
+              'disabled:bg-gray-50 disabled:cursor-not-allowed',
+              'border-gray-300'
+            )}
+            disabled={loading}
+          >
+            <option value="Zirakpur">Zirakpur</option>
+            <option value="Baltana">Baltana</option>
+          </select>
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
       </div>
 
       {/* Message Field (Optional) */}

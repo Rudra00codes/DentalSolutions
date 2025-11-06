@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Flatpickr CSS */
+@import 'flatpickr/dist/flatpickr.css';
+
 /* Instrument Serif Font Loading */
 @font-face {
   font-family: 'Instrument Serif';
@@ -375,3 +378,112 @@ Bento Grid Optimizations for Why Choose Us */
       padding: 2rem;
     }
   }
+/*
+ Custom Flatpickr Styling */
+.flatpickr-calendar {
+  @apply bg-white border border-gray-200 rounded-lg shadow-xl;
+  font-family: inherit;
+}
+
+.flatpickr-months {
+  @apply bg-primary-600 text-white rounded-t-lg;
+}
+
+.flatpickr-month {
+  @apply text-white;
+}
+
+.flatpickr-current-month .flatpickr-monthDropdown-months {
+  @apply bg-primary-600 text-white;
+}
+
+.flatpickr-current-month .numInputWrapper {
+  @apply text-white;
+}
+
+.flatpickr-prev-month,
+.flatpickr-next-month {
+  @apply text-white hover:text-primary-100;
+}
+
+.flatpickr-weekdays {
+  @apply bg-gray-50;
+}
+
+.flatpickr-weekday {
+  @apply text-gray-600 font-medium;
+}
+
+.flatpickr-day {
+  @apply text-gray-700 hover:bg-primary-50 hover:text-primary-600;
+  border-radius: 6px;
+  margin: 1px;
+}
+
+.flatpickr-day.selected {
+  @apply bg-primary-600 text-white;
+  border-color: #0284c7;
+}
+
+.flatpickr-day.today {
+  @apply bg-primary-100 text-primary-700 border-primary-300;
+}
+
+.flatpickr-day.today.selected {
+  @apply bg-primary-600 text-white;
+}
+
+.flatpickr-day:hover {
+  @apply bg-primary-50 border-primary-200;
+}
+
+.flatpickr-day.disabled {
+  @apply text-gray-300 cursor-not-allowed;
+}
+
+.flatpickr-calendar.animate.open {
+  animation: flatpickrFadeIn 0.2s ease-out;
+}
+
+@keyframes flatpickrFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}/*
+ Custom Flatpickr Time Picker Styling */
+.flatpickr-time {
+  @apply bg-white border border-gray-200 rounded-lg shadow-xl;
+}
+
+.flatpickr-time .flatpickr-time-separator,
+.flatpickr-time .flatpickr-am-pm {
+  @apply text-gray-700;
+}
+
+.flatpickr-time input.flatpickr-hour,
+.flatpickr-time input.flatpickr-minute {
+  @apply bg-white text-gray-900 border border-gray-300 rounded text-center;
+}
+
+.flatpickr-time input.flatpickr-hour:focus,
+.flatpickr-time input.flatpickr-minute:focus {
+  @apply border-primary-500 ring-2 ring-primary-500;
+}
+
+.flatpickr-time .flatpickr-am-pm {
+  @apply bg-primary-600 text-white rounded px-2 py-1 cursor-pointer;
+}
+
+.flatpickr-time .flatpickr-am-pm:hover {
+  @apply bg-primary-700;
+}
+
+.flatpickr-time .arrowUp,
+.flatpickr-time .arrowDown {
+  @apply text-primary-600 hover:text-primary-700;
+}

@@ -5,7 +5,7 @@ export interface AppointmentData {
   email: string
   date: string
   time: string
-  branch: 'Zirakpur' | 'Other'
+  branch: 'Zirakpur' | 'Baltana'
   message?: string
 }
 
