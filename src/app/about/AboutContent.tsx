@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Card, { CardContent } from '@/components/ui/Card'
 import PlaceholderImage from '@/components/ui/PlaceholderImage'
+import BounceCards from '@/components/ui/BounceCards'
 import { ASSET_PATHS } from '@/constants/assets'
 import { FaAward, FaHeart, FaShieldAlt, FaUsers, FaMicroscope, FaClock, FaGraduationCap, FaStethoscope } from 'react-icons/fa'
 import { TeamMember } from '@/types'
@@ -128,89 +129,33 @@ export default function AboutContent() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative"
+              className="relative flex justify-center"
             >
-              <div className="relative h-96 md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-                <PlaceholderImage
-                  src={ASSET_PATHS.HERO.OFFICE}
-                  alt="Modern dental clinic interior at Dental Solutions"
-                  fill
-                  sizes="(min-width: 1024px) 50vw, 100vw"
-                  className="object-cover"
-                  priority
-                />
-              </div>
+              <BounceCards
+                images={[
+                  '/assets/images/AboutUs/Image1.png',
+                  '/assets/images/AboutUs/Image2.png',
+                  '/assets/images/AboutUs/Image3.png',
+                ]}
+                containerWidth={560}
+                containerHeight={300}
+                animationDelay={0.4}
+                animationStagger={0.12}
+                easeType="easeOut"
+                transformStyles={[
+                  'rotate(6deg) translate(-80px)',
+                  'rotate(0deg)',
+                  'rotate(-6deg) translate(80px)'
+                ]}
+                enableHover={false}
+                className="w-full md:w-auto"
+              />
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Mission & Vision Section */}
-      <section className="section-padding bg-white">
-        <div className="container mx-auto container-padding">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="mb-6">Our Mission & Vision</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              We are dedicated to transforming smiles and improving lives through exceptional dental care, 
-              advanced technology, and a patient-centered approach that prioritizes comfort and trust.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-12">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <Card variant="bordered" className="h-full">
-                <CardContent>
-                  <div className="text-center mb-6">
-                    <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <FaHeart className="text-2xl text-primary-600" />
-                    </div>
-                    <h3 className="text-2xl font-semibold text-gray-900 mb-4">Our Mission</h3>
-                  </div>
-                  <p className="text-gray-600 leading-relaxed text-center">
-                    To provide comprehensive, high-quality dental care in a comfortable and welcoming environment. 
-                    We strive to educate our patients about oral health while delivering personalized treatments 
-                    that exceed expectations and build lasting relationships based on trust and excellence.
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <Card variant="bordered" className="h-full">
-                <CardContent>
-                  <div className="text-center mb-6">
-                    <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <FaAward className="text-2xl text-primary-600" />
-                    </div>
-                    <h3 className="text-2xl font-semibold text-gray-900 mb-4">Our Vision</h3>
-                  </div>
-                  <p className="text-gray-600 leading-relaxed text-center">
-                    To be the leading dental practice in Zirakpur, recognized for our commitment to innovation, 
-                    patient care, and community health. We envision a future where everyone has access to 
-                    exceptional dental care that promotes overall wellness and confident, healthy smiles.
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      {/* Mission & Vision Section - removed per request */}
 
       {/* Facility Features Section */}
       <section className="section-padding bg-gray-50">
@@ -253,89 +198,7 @@ export default function AboutContent() {
         </div>
       </section>
 
-      {/* Facility Images Gallery */}
-      <section className="section-padding bg-white">
-        <div className="container mx-auto container-padding">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="mb-6">Take a Virtual Tour</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              Explore our modern dental facility designed for your comfort and equipped with advanced technology.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="md:col-span-2 lg:col-span-2"
-            >
-              <div className="relative h-80 md:h-96 rounded-2xl overflow-hidden shadow-lg group">
-                <PlaceholderImage
-                  src={ASSET_PATHS.HERO.OFFICE}
-                  alt="Main treatment room with modern dental equipment"
-                  fill
-                  sizes="(min-width: 1024px) 66vw, 100vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <h4 className="text-lg font-semibold">Treatment Rooms</h4>
-                    <p className="text-sm opacity-90">Modern equipment for comfortable care</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="space-y-8"
-            >
-              <div className="relative h-44 rounded-2xl overflow-hidden shadow-lg group">
-                <PlaceholderImage
-                  src={ASSET_PATHS.HERO.BACKGROUND}
-                  alt="Comfortable waiting area with modern seating"
-                  fill
-                  sizes="(min-width: 1024px) 33vw, 100vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-2 left-2 text-white">
-                    <h5 className="font-semibold">Waiting Area</h5>
-                    <p className="text-xs opacity-90">Relaxing environment</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="relative h-44 rounded-2xl overflow-hidden shadow-lg group">
-                <PlaceholderImage
-                  src={ASSET_PATHS.TESTIMONIALS.BACKGROUND}
-                  alt="Reception area with friendly staff"
-                  fill
-                  sizes="(min-width: 1024px) 33vw, 100vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-2 left-2 text-white">
-                    <h5 className="font-semibold">Reception</h5>
-                    <p className="text-xs opacity-90">Welcoming entrance</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      {/* Facility Images Gallery - removed per request */}
 
       {/* Team Profiles Section */}
       <section className="section-padding bg-white">
@@ -440,61 +303,7 @@ export default function AboutContent() {
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="section-padding bg-primary-50">
-        <div className="container mx-auto container-padding">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="mb-6">Our Core Values</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              The principles that guide everything we do at Dental Solutions.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: 'Patient-Centered Care',
-                description: 'Every decision we make is focused on what\'s best for our patients\' health, comfort, and satisfaction.',
-                color: 'bg-blue-100 text-blue-600'
-              },
-              {
-                title: 'Continuous Innovation',
-                description: 'We stay at the forefront of dental technology and techniques to provide the most effective treatments.',
-                color: 'bg-green-100 text-green-600'
-              },
-              {
-                title: 'Integrity & Trust',
-                description: 'We build lasting relationships through honest communication, transparency, and ethical practice.',
-                color: 'bg-purple-100 text-purple-600'
-              }
-            ].map((value, index) => (
-              <motion.div
-                key={value.title}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                viewport={{ once: true }}
-              >
-                <Card variant="flat" className="h-full text-center bg-white">
-                  <CardContent>
-                    <div className={`w-16 h-16 ${value.color} rounded-full flex items-center justify-center mx-auto mb-6`}>
-                      <div className="w-8 h-8 bg-current rounded-full opacity-20"></div>
-                    </div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">{value.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{value.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Values Section - removed per request */}
     </main>
   )
 }

@@ -25,28 +25,30 @@ export default function HeroSection() {
                 transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
                 className="text-4xl md:text-5xl lg:text-6xl font-bold italic text-gray-900 leading-tight hero-heading-with-image"
               >
-                <span className="block sm:inline">Smile Confidently,</span>
-                <span className="block sm:inline">Live Fully</span>
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
-                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                  whileHover={{ 
-                    scale: 1.1, 
-                    rotate: 5,
-                    transition: { duration: 0.2, ease: "easeOut" }
-                  }}
-                  transition={{ duration: 0.8, delay: 0.3, ease: "backOut" }}
-                  className="tooth-icon inline-block relative cursor-pointer"
-                >
-                  <Image
-                    src="/assets/images/hero/headingTooth.png"
-                    alt="Dental tooth icon"
-                    width={80}
-                    height={80}
-                    className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 object-contain tooth-shadow"
-                    priority
-                  />
-                </motion.div>
+                <span className="block">Smile Confidently,</span>
+                <span className="block">
+                  Live Fully{' '}
+                  <motion.span
+                    initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
+                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                    whileHover={{ 
+                      scale: 1.1, 
+                      rotate: 5,
+                      transition: { duration: 0.2, ease: "easeOut" }
+                    }}
+                    transition={{ duration: 0.8, delay: 0.3, ease: "backOut" }}
+                    className="tooth-icon inline-block align-middle relative cursor-pointer"
+                  >
+                    <Image
+                      src="/assets/images/hero/headingTooth.png"
+                      alt="Dental tooth icon"
+                      width={80}
+                      height={80}
+                      className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 object-contain tooth-shadow"
+                      priority
+                    />
+                  </motion.span>
+                </span>
               </motion.h1>
             </div>
             
