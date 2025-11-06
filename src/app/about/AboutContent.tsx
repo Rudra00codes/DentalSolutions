@@ -30,7 +30,7 @@ const teamMembers: TeamMember[] = [
     name: 'Dr. Vandana Rattu',
     title: 'General Dentist',
     specialization: 'Preventive & Restorative Dentistry',
-    image: '/assets/images/AboutUs/avatars/Vandana.jpg',
+    image: '/assets/images/AboutUs/avatars/Vandana.png',
     credentials: ['BDS']
   },
   {
