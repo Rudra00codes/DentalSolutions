@@ -93,9 +93,7 @@ export default function RootLayout({
         <div className="min-h-screen flex flex-col">
           <Header />
           <main className="flex-grow">
-            <PageTransition>
-              {children}
-            </PageTransition>
+            {children}
           </main>
           <Footer />
           <ScrollToTop />
