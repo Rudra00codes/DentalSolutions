@@ -11,51 +11,35 @@ import { TeamMember } from '@/types'
 const teamMembers: TeamMember[] = [
   {
     id: '1',
-    name: 'Dr. Rajesh Kumar',
-    title: 'Chief Dental Officer & Founder',
-    specialization: 'Oral & Maxillofacial Surgery',
-    image: ASSET_PATHS.AVATARS.RAJESH,
-    credentials: ['BDS, MDS', '15+ Years Experience', 'Implant Specialist', 'Advanced Oral Surgery']
+    name: 'Dr. Harsh Kohli',
+    title: 'Oro-Dental Surgeon & Implantologist',
+    specialization: 'General Dentistry & Implants',
+    image: '/assets/images/AboutUs/avatars/Harsh.png',
+    credentials: ['BDS, MDS']
   },
   {
     id: '2',
-    name: 'Dr. Priya Sharma',
-    title: 'Senior Dental Consultant',
-    specialization: 'Cosmetic & Restorative Dentistry',
-    image: ASSET_PATHS.AVATARS.PRIYA,
-    credentials: ['BDS, MDS', '12+ Years Experience', 'Cosmetic Dentistry Expert', 'Smile Makeover Specialist']
+    name: 'Dr. Ritika Arora',
+    title: 'BDS, MDS (Periodontist Surgeon & Implantologist)',
+    specialization: 'Periodontics & Implantology',
+    image: '/assets/images/AboutUs/avatars/Ritika.png',
+    credentials: ['BDS, MDS']
   },
   {
     id: '3',
-    name: 'Dr. Vikram Singh',
-    title: 'Orthodontist',
-    specialization: 'Orthodontics & Dentofacial Orthopedics',
-    image: ASSET_PATHS.AVATARS.VIKRAM,
-    credentials: ['BDS, MDS Orthodontics', '10+ Years Experience', 'Invisalign Certified', 'Braces Specialist']
+    name: 'Dr. Vandana Rattu',
+    title: 'General Dentist',
+    specialization: 'Preventive & Restorative Dentistry',
+    image: '/assets/images/AboutUs/avatars/Vandana.jpg',
+    credentials: ['BDS']
   },
   {
     id: '4',
-    name: 'Dr. Anjali Gupta',
-    title: 'Pediatric Dentist',
-    specialization: 'Pediatric Dentistry',
-    image: ASSET_PATHS.AVATARS.ANJALI,
-    credentials: ['BDS, MDS Pedodontics', '8+ Years Experience', 'Child Psychology Certified', 'Preventive Care Expert']
-  },
-  {
-    id: '5',
-    name: 'Dr. Meera Patel',
-    title: 'Endodontist',
-    specialization: 'Root Canal & Endodontic Therapy',
-    image: ASSET_PATHS.AVATARS.MEERA,
-    credentials: ['BDS, MDS Endodontics', '9+ Years Experience', 'Microscopic Endodontics', 'Pain Management Expert']
-  },
-  {
-    id: '6',
-    name: 'Dr. Arjun Malhotra',
-    title: 'Periodontist',
-    specialization: 'Periodontics & Gum Disease Treatment',
-    image: ASSET_PATHS.AVATARS.ARJUN,
-    credentials: ['BDS, MDS Periodontics', '11+ Years Experience', 'Laser Therapy Specialist', 'Gum Surgery Expert']
+    name: 'Dr. Anmol Sharma',
+    title: 'General Dentist',
+    specialization: 'Comprehensive Dental Care',
+    image: '/assets/images/AboutUs/avatars/Anmol.png',
+    credentials: ['BDS']
   }
 ]
 
@@ -129,7 +113,7 @@ export default function AboutContent() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative flex justify-center overflow-hidden px-4 py-8 lg:py-0"
+              className="relative flex justify-center px-4 py-8 lg:py-0"
             >
               <BounceCards
                 images={[
@@ -137,7 +121,7 @@ export default function AboutContent() {
                   '/assets/images/AboutUs/Image2.png',
                   '/assets/images/AboutUs/Image3.png',
                 ]}
-                className="w-full max-w-[280px] h-[200px] sm:max-w-[380px] sm:h-[260px] md:max-w-[480px] md:h-[300px] lg:max-w-[560px] lg:h-[340px]"
+                className="w-full h-auto max-w-[320px] sm:max-w-[380px] md:max-w-[480px] md:h-[300px] lg:max-w-[560px] lg:h-[340px]"
                 animationDelay={0.4}
                 animationStagger={0.12}
                 easeType="power3.out"
@@ -155,6 +139,54 @@ export default function AboutContent() {
       </section>
 
       {/* Mission & Vision Section - removed per request */}
+
+      {/* Team Profiles Section */}
+      <section className="section-padding bg-white">
+        <div className="container mx-auto container-padding">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12 md:mb-16"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full border border-gray-300/70 bg-white/70 text-sm text-gray-700 mb-3">About Us</div>
+            <h2 className="font-serif text-5xl md:text-7xl tracking-tight text-gray-900">Our Team</h2>
+          </motion.div>
+
+          {/* Team grid – Figma style: image on top, name + designation below */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+            {teamMembers.map((member, index) => (
+              <motion.div
+                key={member.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="group">
+                  {/* Photo */}
+                  <div className="relative w-full aspect-[3/4] rounded-xl overflow-hidden shadow-sm">
+                    <PlaceholderImage
+                      src={member.image}
+                      alt={`${member.name} - ${member.title}`}
+                      fill
+                      className="object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                      sizes="(min-width: 1024px) 420px, (min-width: 768px) 45vw, 100vw"
+                    />
+                  </div>
+
+                  {/* Name and designation */}
+                  <div className="mt-4">
+                    <h3 className="font-serif text-[28px] md:text-[32px] text-gray-900 leading-snug">{member.name}</h3>
+                    <p className="text-[13px] md:text-[15px] text-gray-600">{member.title}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Facility Features Section */}
       <section className="section-padding bg-gray-50">
@@ -197,112 +229,6 @@ export default function AboutContent() {
         </div>
       </section>
 
-      {/* Facility Images Gallery - removed per request */}
-
-      {/* Team Profiles Section */}
-      <section className="section-padding bg-white">
-        <div className="container mx-auto container-padding">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="mb-6">Meet Our Expert Team</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Our experienced dental professionals are committed to providing exceptional care with 
-              advanced expertise and a compassionate approach to your oral health needs.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teamMembers.map((member, index) => (
-              <motion.div
-                key={member.id}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <Card hover className="h-full group">
-                  <CardContent className="text-center">
-                    {/* Profile Image */}
-                    <div className="relative w-32 h-32 mx-auto mb-6">
-                      <div className="relative w-full h-full rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow duration-300">
-                        <PlaceholderImage
-                          src={member.image}
-                          alt={`${member.name} - ${member.title}`}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                      {/* Professional Badge */}
-                      <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center shadow-lg">
-                        <FaStethoscope className="text-white text-sm" />
-                      </div>
-                    </div>
-
-                    {/* Name and Title */}
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>
-                    <p className="text-primary-600 font-medium mb-2">{member.title}</p>
-                    <p className="text-gray-600 text-sm mb-4">{member.specialization}</p>
-
-                    {/* Credentials */}
-                    <div className="space-y-2">
-                      {member.credentials.map((credential, credIndex) => (
-                        <div
-                          key={credIndex}
-                          className="flex items-center justify-center gap-2 text-sm text-gray-600"
-                        >
-                          <div className="w-1.5 h-1.5 bg-primary-400 rounded-full"></div>
-                          <span>{credential}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Education Icon */}
-                    <div className="mt-6 pt-4 border-t border-gray-100">
-                      <div className="flex items-center justify-center gap-2 text-primary-600">
-                        <FaGraduationCap className="text-lg" />
-                        <span className="text-sm font-medium">Certified Professional</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Team Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
-          >
-            <div className="space-y-2">
-              <div className="text-3xl md:text-4xl font-bold text-primary-600">6+</div>
-              <div className="text-gray-600 text-sm md:text-base">Expert Dentists</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-3xl md:text-4xl font-bold text-primary-600">60+</div>
-              <div className="text-gray-600 text-sm md:text-base">Years Combined Experience</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-3xl md:text-4xl font-bold text-primary-600">15+</div>
-              <div className="text-gray-600 text-sm md:text-base">Specializations</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-3xl md:text-4xl font-bold text-primary-600">5000+</div>
-              <div className="text-gray-600 text-sm md:text-base">Happy Patients</div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Values Section - removed per request */}
     </main>
   )
 }
