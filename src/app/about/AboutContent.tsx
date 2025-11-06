@@ -80,7 +80,12 @@ export default function AboutContent() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-50 to-blue-50 py-16 md:py-20 pt-24 lg:pt-28">
+      <section 
+        className="relative py-16 md:py-20 pt-24 lg:pt-28"
+        style={{ 
+          backgroundImage: 'linear-gradient(120deg, #c4d9fbcb 0%, #b0e4fdff 100%)' 
+        }}
+      >
         <div className="container mx-auto container-padding">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div
