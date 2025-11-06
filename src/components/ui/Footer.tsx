@@ -28,7 +28,12 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="text-gray-800 rounded-t-[50px]" style={{ backgroundColor: '#dbe9ff' }}>
+    <footer 
+      className="text-gray-800 rounded-t-[50px] overflow-hidden" 
+      style={{ 
+        backgroundImage: 'linear-gradient(120deg, #bdd4f98b 0%, #afe0f7ff 100%)' 
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -141,13 +146,12 @@ export default function Footer() {
             </div>
           </div>
         </div>
-
-        {/* Bottom Section */}
-        <div className="mt-8 pt-8 border-t border-gray-300">
-          <div 
-            className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-6 -mb-12"
-            style={{ backgroundColor: '#0481c3' }}
-          >
+      </div>
+      
+      {/* Bottom Section - Full Width */}
+      <div className="w-full" style={{ backgroundColor: '#0e8cd0ff' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-white text-sm">
               © {new Date().getFullYear()} Dental Solutions. All rights reserved.
             </div>
