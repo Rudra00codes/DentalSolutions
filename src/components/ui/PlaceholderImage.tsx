@@ -51,6 +51,11 @@ export default function PlaceholderImage({
     return <PlaceholderDiv />
   }
 
+  // Provide a sensible default sizes value when using fill to avoid Next.js warnings
+  const resolvedSizes = sizes ?? (fill
+    ? '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
+    : undefined)
+
   const imageProps = {
     src,
     alt,
@@ -58,7 +63,7 @@ export default function PlaceholderImage({
     priority,
     onError: handleImageError,
     onLoad: handleImageLoad,
-    sizes,
+    sizes: resolvedSizes,
     ...(fill ? { fill: true } : { width, height })
   } as any
 

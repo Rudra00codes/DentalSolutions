@@ -19,6 +19,13 @@ export default function Logo({ className = '', showText = true, size = 'md' }: L
     lg: { container: 'w-16 h-16', text: 'text-3xl' }
   }
 
+  // Map responsive pixel sizes for Next/Image when using fill
+  const imageSizesMap: Record<Required<LogoProps>['size'], string> = {
+    sm: '(min-width: 1024px) 32px, 32px',
+    md: '(min-width: 1024px) 48px, 40px',
+    lg: '(min-width: 1024px) 64px, 64px',
+  }
+
   const handleImageError = () => {
     setImageError(true)
   }
@@ -44,6 +51,7 @@ export default function Logo({ className = '', showText = true, size = 'md' }: L
             className="object-contain"
             priority
             onError={handleImageError}
+            sizes={imageSizesMap[size]}
           />
         </div>
       )}

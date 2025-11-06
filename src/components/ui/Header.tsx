@@ -58,13 +58,18 @@ export default function Header() {
     const element = document.getElementById(sectionId)
     if (element) {
       // Calculate offset for floating header - accounting for header height + padding
-      const headerOffset = 140
+      // Use smaller offset on mobile for better visibility
+      const isMobile = window.innerWidth < 768
+      const headerOffset = isMobile ? 100 : 140
       const elementPosition = element.getBoundingClientRect().top
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset
       
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
+      // Use requestAnimationFrame to ensure scroll happens after any layout changes
+      requestAnimationFrame(() => {
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        })
       })
     }
   }
@@ -81,9 +86,17 @@ export default function Header() {
       
       // Extract section ID from href (e.g., '/#services' -> 'services')
       const sectionId = item.href.split('#')[1]
-      scrollToSection(sectionId)
       
-      // Close mobile menu if open
+      // Close mobile menu first to prevent animation interference
+      setMobileMenuOpen(false)
+      
+      // Delay scroll until after menu close animation completes
+      // This prevents race conditions and ensures smooth scrolling
+      setTimeout(() => {
+        scrollToSection(sectionId)
+      }, 300) // Match the menu animation duration
+    } else if (item.type === 'page') {
+      // For page navigation, close menu immediately
       setMobileMenuOpen(false)
     }
   }
