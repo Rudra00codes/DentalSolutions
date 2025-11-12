@@ -20,7 +20,7 @@ const teamMembers: TeamMember[] = [
   {
     id: '2',
     name: 'Dr. Ritika Arora',
-    title: 'BDS, MDS (Periodontist Surgeon & Implantologist)',
+    title: 'BDS, MDS Resident (Perioplastic Surgeon & Implantologist)',
     specialization: 'Periodontics & Implantology',
     image: '/assets/images/AboutUs/avatars/Ritika.png',
     credentials: ['BDS, MDS']
@@ -40,7 +40,18 @@ const teamMembers: TeamMember[] = [
     specialization: 'Comprehensive Dental Care',
     image: '/assets/images/AboutUs/avatars/Anmol.png',
     credentials: ['BDS']
+  },
+
+  {
+    id: '5',
+    name: 'Dr. Tulsi Puri',
+    title: 'General Dentist',
+    specialization: 'Comprehensive Dental Care',
+    image: '/assets/images/AboutUs/avatars/Tulsi.png',
+    credentials: ['BDS']
   }
+
+
 ]
 
 const facilityFeatures = [
@@ -80,10 +91,10 @@ export default function AboutContent() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section 
+      <section
         className="relative py-16 md:py-20 pt-24 lg:pt-28"
-        style={{ 
-          backgroundImage: 'linear-gradient(120deg, #c4d9fbcb 0%, #b0e4fdff 100%)' 
+        style={{
+          backgroundImage: 'linear-gradient(120deg, #c4d9fbcb 0%, #b0e4fdff 100%)'
         }}
       >
         <div className="container mx-auto container-padding">
@@ -95,17 +106,17 @@ export default function AboutContent() {
             >
               <h1 className="mb-6 text-balance">About Dental Solutions</h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Your trusted partner in oral health, providing comprehensive dental care with 
+                Your trusted partner in oral health, providing comprehensive dental care with
                 advanced technology and a compassionate approach in the heart of Zirakpur.
               </p>
               <div className="flex flex-wrap gap-4 text-sm text-gray-600">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary-500 rounded-full"></div>
-                  <span>15+ Years of Excellence</span>
+                  <span>2+ Years of Excellence</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary-500 rounded-full"></div>
-                  <span>5000+ Happy Patients</span>
+                  <span>500+ Happy Patients</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary-500 rounded-full"></div>
@@ -113,7 +124,7 @@ export default function AboutContent() {
                 </div>
               </div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -205,7 +216,7 @@ export default function AboutContent() {
           >
             <h2 className="mb-6">Our State-of-the-Art Facility</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Experience dental care in a modern, comfortable environment equipped with the latest technology 
+              Experience dental care in a modern, comfortable environment equipped with the latest technology
               and designed with your comfort and safety in mind.
             </p>
           </motion.div>

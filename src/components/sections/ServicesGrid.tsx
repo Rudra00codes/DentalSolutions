@@ -23,14 +23,14 @@ const services: Service[] = [
   },
   {
     id: '2',
-    name: 'Dentures',
+    name: 'Pediatric Dentistry',
     description:
-      'A removable replacement for missing teeth. Designed for comfort and function by experienced prosthodontists.',
+      'Specialized dental care for children and adolescents. Gentle, child-friendly treatments to ensure healthy smiles from an early age.',
   image: '/assets/images/services/Dentures.png'
   },
   {
     id: '3',
-    name: 'Braces',
+    name: 'Invisalign aligners',
     description:
       'Modern braces to straighten and align your teeth. Multiple options available with specialist orthodontists.',
   image: '/assets/images/services/Braces.png'

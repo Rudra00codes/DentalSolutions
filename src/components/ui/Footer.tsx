@@ -139,8 +139,8 @@ export default function Footer() {
               <div className="flex items-start space-x-3">
                 <HiClock className="h-5 w-5 text-primary-600 mt-0.5 flex-shrink-0" />
                 <div className="text-gray-600 text-sm">
-                  <p>Mon - Sat: 9:00 AM - 8:00 PM</p>
-                  <p>Sunday: 10:00 AM - 6:00 PM</p>
+                  <p>Mon - Sat: 10:00 AM - 10:00 PM</p>
+                  <p>Sunday: 10:00 AM - 8:00 PM</p>
                 </div>
               </div>
             </div>
