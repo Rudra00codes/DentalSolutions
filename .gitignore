@@ -21,6 +21,7 @@
 *.pem
 /.vscode
 /.kiro
+EmailjsTemplate.html
 
 # debug
 npm-debug.log*
