@@ -15,8 +15,8 @@ export default function Logo({ className = '', showText = true, size = 'md' }: L
 
   const sizes = {
     sm: { container: 'w-8 h-8', text: 'text-lg' },
-    md: { container: 'w-10 h-10 lg:w-12 lg:h-12', text: 'text-xl lg:text-2xl' },
-    lg: { container: 'w-16 h-16', text: 'text-3xl' }
+    md: { container: 'w-10 h-10 lg:w-12 lg:h-12', text: 'text-2xl lg:text-3xl' },
+    lg: { container: 'w-16 h-16', text: 'text-4xl' }
   }
 
   // Map responsive pixel sizes for Next/Image when using fill

@@ -15,7 +15,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.05 }}
-            className="space-y-8 text-center sm:text-left hero-content-mobile"
+            className="space-y-8 text-center sm:text-left hero-content-mobile lg:order-1"
           >
             {/* Main Heading */}
             <div className="space-y-4">
@@ -52,17 +52,7 @@ export default function HeroSection() {
               </motion.h1>
             </div>
             
-            {/* Subtitle */}
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-lg text-center sm:text-left mx-auto sm:mx-0"
-            >
-              Advanced, gentle care and personalized treatment for a confident, worry-free smile.
-            </motion.p>
-            
-            {/* Google Reviews */}
+            {/* Google Reviews - Hidden on mobile, shown on desktop */}
             <motion.a
               href="https://share.google/LDxtBIoHMq4JhsGzq"
               target="_blank"
@@ -72,37 +62,42 @@ export default function HeroSection() {
               transition={{ duration: 0.8, delay: 0.6 }}
               whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
               whileTap={{ scale: 0.98 }}
-              className="group flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-100 mx-auto sm:mx-0 max-w-fit cursor-pointer hover:shadow-lg transition-all duration-300"
+              className="group hidden lg:flex flex-row items-center gap-4 p-5 bg-white rounded-xl shadow-md border border-gray-100 max-w-fit cursor-pointer hover:shadow-lg transition-all duration-300"
             >
-              <div className="flex items-center gap-2">
+              {/* Stars + Rating */}
+              <div className="flex items-center gap-3">
                 <div className="flex items-center gap-1">
                   {[...Array(5)].map((_, i) => (
                     <FaStar key={i} className="text-yellow-400 text-sm" />
                   ))}
                 </div>
-                <span className="font-semibold text-gray-900">5.0</span>
+                <span className="font-bold text-gray-900">5.0</span>
               </div>
-              <div className="text-gray-600">
-                <span className="font-medium">Full 5 Star review on Google</span>
-                <div className="text-sm text-gray-500">(259)</div>
+              
+              {/* Text + Arrow */}
+              <div className="flex items-center gap-3">
+                <div className="text-gray-600">
+                  <span className="font-medium">Full 5 Star review on Google</span>
+                  <div className="text-sm text-gray-500">(259)</div>
+                </div>
+                <FaArrowRight className="text-gray-400 transition-transform duration-200 group-hover:translate-x-1 flex-shrink-0" />
               </div>
-              <FaArrowRight className="text-gray-400 ml-auto transition-transform duration-200 group-hover:translate-x-1" />
             </motion.a>
 
           </motion.div>
 
-          {/* Right Column - Image */}
+          {/* Right Column - Image with Overlapping Google Reviews on Mobile */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className="relative"
+            className="relative lg:order-2"
           >
             <div className="relative">
               {/* Main Image */}
               <div className="relative z-10 h-[600px] w-full">
                 <PlaceholderImage
-                  src="/assets/images/hero/Hero_Right_Img.png"
+                  src="/assets/images/hero/Hero_Girl_Img.png"
                   alt="Confident woman with beautiful smile"
                   fill
                   className="rounded-2xl shadow-2xl object-cover"
@@ -114,6 +109,47 @@ export default function HeroSection() {
               {/* Background Decoration */}
               <div className="absolute -top-4 -right-4 w-full h-full bg-gradient-to-br from-primary-100 to-blue-100 rounded-2xl -z-10"></div>
               
+              {/* Subtitle - Overlapping on Mobile */}
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="absolute top-4 left-4 right-4 z-20 lg:hidden text-base font-bold text-grey-600 leading-relaxed text-center bg-white/65 backdrop-blur-sm rounded-xl shadow-lg border border-gray-100 cursor-pointer hover:shadow-xl transition-all duration-300 rounded-lg p-3"
+              >
+                Advanced, gentle care and personalized treatment for a confident, worry-free smile.
+              </motion.p>
+
+              {/* Google Reviews - Overlapping on Mobile */}
+              <motion.a
+                href="https://share.google/LDxtBIoHMq4JhsGzq"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+                whileTap={{ scale: 0.98 }}
+                className="group absolute top-32 right-12 z-20 lg:hidden flex flex-col-reverse items-center gap-2 p-3 bg-white/65 backdrop-blur-sm rounded-xl shadow-lg border border-gray-100 cursor-pointer hover:shadow-xl transition-all duration-300 max-w-[280px]"
+              >
+                {/* Stars + Rating (bottom on mobile) */}
+                <div className="flex items-center gap-2 w-full justify-start">
+                  <div className="flex items-center gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <FaStar key={i} className="text-yellow-400 text-sm" />
+                    ))}
+                  </div>
+                  <span className="font-bold text-gray-900">5.0</span>
+                </div>
+                
+                {/* Text + Arrow (top on mobile) */}
+                <div className="flex items-center gap-2 w-full justify-between">
+                  <div className="text-gray-600 text-left">
+                    <span className="font-medium text-sm">Full 5 Star review on Google</span>
+                    <div className="text-xs text-gray-500">(259)</div>
+                  </div>
+                  <FaArrowRight className="text-gray-400 transition-transform duration-200 group-hover:translate-x-1 flex-shrink-0 text-sm" />
+                </div>
+              </motion.a>
 
             </div>
           </motion.div>
