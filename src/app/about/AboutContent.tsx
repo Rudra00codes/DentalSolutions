@@ -112,11 +112,11 @@ export default function AboutContent() {
               <div className="flex flex-wrap gap-4 text-sm text-gray-600">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary-500 rounded-full"></div>
-                  <span>2+ Years of Excellence</span>
+                  <span>Highly experienced dental surgeons</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary-500 rounded-full"></div>
-                  <span>500+ Happy Patients</span>
+                  <span>5000+ smiles delivered</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary-500 rounded-full"></div>

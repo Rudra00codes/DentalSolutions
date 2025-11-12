@@ -25,9 +25,9 @@ export default function HeroSection() {
                 transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
                 className="text-4xl md:text-5xl lg:text-6xl font-bold italic text-gray-900 leading-tight hero-heading-with-image"
               >
-                <span className="block">Smile Confidently,</span>
+                <span className="block">A complete family</span>
                 <span className="block">
-                  Live Fully{' '}
+                  dental care{' '}
                   <motion.span
                     initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
                     animate={{ opacity: 1, scale: 1, rotate: 0 }}
