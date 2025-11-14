@@ -111,8 +111,8 @@ export default function Appointment() {
                   <div>
                     <p className="font-medium text-gray-900">Hours</p>
                     <div className="text-gray-600 text-sm">
-                      <p>Mon - Sat: 9:00 AM - 6:00 PM</p>
-                      <p>Sunday: Closed</p>
+                      <p>Mon - Sat: 10:00 AM - 10:00 PM</p>
+                      <p>Sunday: 10:00 AM - 8:00 PM</p>
                     </div>
                   </div>
                 </div>
