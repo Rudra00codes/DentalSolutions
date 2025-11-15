@@ -6,6 +6,7 @@ import { generateMetadata, generateLocalBusinessStructuredData, generateWebsiteS
 import WebVitals from '@/components/WebVitals'
 import PageTransition from '@/components/ui/PageTransition'
 import WhatsAppFloatingButton from '@/components/ui/WhatsAppFloatingButton'
+import Script from "next/script";
 
 import ScrollToTop from '@/components/ui/ScrollToTop'
 
@@ -30,13 +31,27 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Google Tag Manager */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-T6T5TMD2');
+            `,
+          }}
+        />
+        {/* End Google Tag Manager */}
+
         {/* Favicon */}
         <link rel="icon" type="image/x-icon" href="/assets/icons/favicon_io/favicon.ico" />
         <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon_io/favicon-16x16.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon_io/favicon-32x32.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/favicon_io/apple-touch-icon.png" />
         <link rel="manifest" href="/assets/icons/favicon_io/site.webmanifest" />
-        
+
         {/* Font Preloading for Performance */}
         <link
           rel="preload"
@@ -89,6 +104,16 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
+         {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-T6T5TMD2"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
         <WebVitals />
         <div className="min-h-screen flex flex-col">
           <Header />
