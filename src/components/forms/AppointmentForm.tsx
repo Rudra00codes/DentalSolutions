@@ -70,43 +70,95 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
 
   const validateTime = (time: string): string | undefined => {
     if (!time) return 'Time is required'
+    
+    // Validate time is within business hours
+    const [hours, minutes] = time.split(':').map(Number)
+    
+    // Determine business hours based on selected date
+    let startHour = 10
+    let endHour = 22
+    
+    if (formData.date) {
+      const date = new Date(formData.date)
+      const dayOfWeek = date.getDay()
+      
+      if (dayOfWeek === 0) {
+        // Sunday: 10 AM - 8 PM
+        endHour = 20
+      }
+    }
+    
+    if (hours < startHour || hours >= endHour) {
+      const dayLabel = formData.date && new Date(formData.date).getDay() === 0 
+        ? 'Sunday (10:00 AM - 8:00 PM)' 
+        : 'Mon-Sat (10:00 AM - 10:00 PM)'
+      return `Please select a time within business hours: ${dayLabel}`
+    }
+    
     return undefined
   }
 
-  // Handle input changes
+  // Handle input changes with immediate validation
   const handleInputChange = (field: keyof AppointmentData, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }))
     
-    // Clear error when user starts typing
-    if (errors[field as keyof FormErrors]) {
-      setErrors(prev => ({ ...prev, [field]: undefined }))
-    }
-  }
-
-  // Handle field blur for validation
-  const handleBlur = (field: keyof AppointmentData) => {
+    // Mark field as touched when value changes
     setTouched(prev => ({ ...prev, [field]: true }))
     
+    // Validate the new value immediately
     let error: string | undefined
     switch (field) {
       case 'name':
-        error = validateName(formData.name)
+        error = validateName(value)
         break
       case 'phone':
-        error = validatePhone(formData.phone)
+        error = validatePhone(value)
         break
       case 'email':
-        error = validateEmail(formData.email)
+        error = validateEmail(value)
         break
       case 'date':
-        error = validateDate(formData.date)
+        error = validateDate(value)
         break
       case 'time':
-        error = validateTime(formData.time)
+        error = validateTime(value)
         break
     }
     
+    // Update error state with the validation result
     setErrors(prev => ({ ...prev, [field]: error }))
+  }
+
+  // Handle field blur for validation (using current formData)
+  const handleBlur = (field: keyof AppointmentData) => {
+    setTouched(prev => ({ ...prev, [field]: true }))
+    
+    // Use setTimeout to ensure state has updated before validating
+    setTimeout(() => {
+      setFormData(currentData => {
+        let error: string | undefined
+        switch (field) {
+          case 'name':
+            error = validateName(currentData.name)
+            break
+          case 'phone':
+            error = validatePhone(currentData.phone)
+            break
+          case 'email':
+            error = validateEmail(currentData.email)
+            break
+          case 'date':
+            error = validateDate(currentData.date)
+            break
+          case 'time':
+            error = validateTime(currentData.time)
+            break
+        }
+        
+        setErrors(prev => ({ ...prev, [field]: error }))
+        return currentData
+      })
+    }, 0)
   }
 
   // Validate entire form
@@ -282,6 +334,7 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
             value={formData.time}
             onChange={(time) => handleInputChange('time', time)}
             onBlur={() => handleBlur('time')}
+            selectedDate={formData.date}
             placeholder="Select time (HH:MM)"
             disabled={loading}
             error={!!(errors.time && touched.time)}
