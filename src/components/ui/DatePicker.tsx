@@ -40,7 +40,9 @@ export default function DatePicker({
 
     // Initialize Flatpickr
     flatpickrRef.current = flatpickr(inputRef.current, {
-      dateFormat: 'Y-m-d',
+      dateFormat: 'd/m/Y', // Display format for better mobile UX
+      altInput: true, // Use alternate input for display
+      altFormat: 'd/m/Y', // Alternate display format
       minDate: minDate || 'today',
       allowInput: false,
       clickOpens: true,
