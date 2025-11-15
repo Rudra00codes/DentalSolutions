@@ -4,10 +4,7 @@ import './globals.css'
 import { Header, Footer } from '@/components/ui'
 import { generateMetadata, generateLocalBusinessStructuredData, generateWebsiteStructuredData } from '@/lib/seo'
 import WebVitals from '@/components/WebVitals'
-import PageTransition from '@/components/ui/PageTransition'
 import WhatsAppFloatingButton from '@/components/ui/WhatsAppFloatingButton'
-import Script from "next/script";
-
 import ScrollToTop from '@/components/ui/ScrollToTop'
 
 
