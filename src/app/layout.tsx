@@ -6,6 +6,8 @@ import { generateMetadata, generateLocalBusinessStructuredData, generateWebsiteS
 import WebVitals from '@/components/WebVitals'
 import WhatsAppFloatingButton from '@/components/ui/WhatsAppFloatingButton'
 import ScrollToTop from '@/components/ui/ScrollToTop'
+import Script from "next/script";
+
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -28,15 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17732836414"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
 
-          gtag('config', 'AW-17732836414');
-        </script>
 
         {/* Favicon */}
         <link rel="icon" type="image/x-icon" href="/assets/icons/favicon_io/favicon.ico" />
@@ -97,6 +91,19 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17732836414"
+        />
+
+        <Script id="google-ads-tag">
+          {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17732836414');
+  `}
+        </Script>
 
         <WebVitals />
         <div className="min-h-screen flex flex-col">
