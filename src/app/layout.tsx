@@ -91,6 +91,13 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
+        {/* ElevenLabs Conversational AI Widget */}
+        <Script
+          src="https://unpkg.com/@elevenlabs/convai-widget-embed"
+          strategy="afterInteractive"
+          type="text/javascript"
+        />
+        
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=AW-17732836414"
@@ -114,6 +121,9 @@ export default function RootLayout({
           <Footer />
           <ScrollToTop />
           <WhatsAppFloatingButton />
+          
+          {/* ElevenLabs AI Conversational Agent */}
+          <elevenlabs-convai agent-id="agent_7201k88paba0fyt81tspvmnyzzgm"></elevenlabs-convai>
         </div>
       </body>
     </html>
