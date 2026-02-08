@@ -45,7 +45,7 @@ export default function RootLayout({
         
         {/* Performance & Security */}
         <meta name="referrer" content="strict-origin-when-cross-origin" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         
         {/* Tap highlight on mobile */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
