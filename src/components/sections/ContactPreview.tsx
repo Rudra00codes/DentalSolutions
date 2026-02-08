@@ -14,14 +14,14 @@ export default function ContactPreview() {
         address:
           '1st Floor, Shop No, 37-38, Tribune Road, Saini Vihar Phase-2, Baltana, Zirakpur, Punjab 140604',
         mapSrc:
-          'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3431.5572543412845!2d76.8249166!3d30.6745936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390febe5a774a76b%3A0xf38246fc4bc03ca6!2sDENTAL%20SOLUTIONS%20%7C%20DENTAL%20CLINIC%20IN%20BALTANA%20%7C%20DENTAL%20IMPLANT%20CENTRE!5e0!3m2!1sen!2sin!4v1762438136436!5m2!1sen!2sin',
+          'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d109852.933215276!2d76.7105804!3d30.6366584!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390febe5a774a76b%3A0xf38246fc4bc03ca6!2sDENTAL%20SOLUTIONS%20%7C%20DENTAL%20CLINIC%20IN%20BALTANA%20%7C%20DENTAL%20IMPLANT%20CENTRE!5e0!3m2!1sen!2sin!4v1770579079908!5m2!1sen!2sin',
       }
     }
     return {
       address:
         'SCO 2, Upper Ground Floor, VIP Central, W VIP Rd, opposite Surya Tower, Zirakpur, Punjab 140603',
       mapSrc:
-        'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3432.9031835722617!2d76.8104913!3d30.636685999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390feba7825c9573%3A0xcb62c7743a59716!2sDENTAL%20SOLUTIONS%20%7C%20DENTAL%20CLINIC%20IN%20ZIRAKPUR%20%7C%20DENTAL%20IMPLANT%20CENTRE!5e0!3m2!1sen!2sin!4v1762438076762!5m2!1sen!2sin',
+        'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13731.612734289047!2d76.79143688715821!3d30.636686000000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390feba7825c9573%3A0xcb62c7743a59716!2sDENTAL%20SOLUTIONS%20%7C%20DENTAL%20CLINIC%20ZIRAKPUR%20%7C%20DENTAL%20IMPLANT%20CENTRE!5e0!3m2!1sen!2sin!4v1770579143972!5m2!1sen!2sin',
     }
   }, [branch])
 
@@ -85,7 +85,6 @@ export default function ContactPreview() {
               <p className="text-sm text-gray-600 mb-4">{address}</p>
               <div className="rounded-2xl border border-blue-200 overflow-hidden bg-blue-100">
                 <iframe
-                  key={branch}
                   src={mapSrc}
                   width="100%"
                   height="300"
