@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import 'flatpickr/dist/flatpickr.css'
 import './globals.css'
 import { Header, Footer } from '@/components/ui'
 import { generateMetadata, generateLocalBusinessStructuredData, generateWebsiteStructuredData } from '@/lib/seo'
@@ -31,7 +32,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-
+        {/* Mobile Viewport - Critical for mobile performance */}
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover" />
+        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+        
+        {/* Mobile Optimization */}
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="Dental Solutions" />
+        
+        {/* Performance & Security */}
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
         {/* Favicon */}
         <link rel="icon" type="image/x-icon" href="/assets/icons/favicon_io/favicon.ico" />

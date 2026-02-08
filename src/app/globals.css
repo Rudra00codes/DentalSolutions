@@ -2,8 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Flatpickr CSS */
-@import 'flatpickr/dist/flatpickr.css';
+/* Mobile Performance Optimizations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimize touch interactions on mobile */
+button, a, input[type="button"], input[type="submit"] {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Prevent font scaling on landscape */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Optimize mobile viewport */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+  }
+}
+
+/* Network-aware image loading for slow 3G connections */
+@media (prefers-reduced-data: reduce) {
+  img {
+    content-visibility: auto;
+  }
+}
+
+/* Improve scroll performance */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  will-change: auto;
+}
 
 /* Instrument Serif Font Loading */
 @font-face {
