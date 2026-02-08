@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import 'flatpickr/dist/flatpickr.css'
 import './globals.css'
 import { Header, Footer } from '@/components/ui'
 import { generateMetadata, generateLocalBusinessStructuredData, generateWebsiteStructuredData } from '@/lib/seo'
@@ -47,6 +46,10 @@ export default function RootLayout({
         {/* Performance & Security */}
         <meta name="referrer" content="strict-origin-when-cross-origin" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        
+        {/* Tap highlight on mobile */}
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+
 
         {/* Favicon */}
         <link rel="icon" type="image/x-icon" href="/assets/icons/favicon_io/favicon.ico" />
