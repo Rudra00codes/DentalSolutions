@@ -5,6 +5,7 @@ import { Header, Footer } from '@/components/ui'
 import { generateMetadata, generateLocalBusinessStructuredData, generateWebsiteStructuredData } from '@/lib/seo'
 import WebVitals from '@/components/WebVitals'
 import WhatsAppFloatingButton from '@/components/ui/WhatsAppFloatingButton'
+import CallButton from '@/components/ui/CallButton'
 import ScrollToTop from '@/components/ui/ScrollToTop'
 import Script from "next/script";
 
@@ -91,12 +92,6 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        {/* ElevenLabs Conversational AI Widget */}
-        <Script
-          src="https://unpkg.com/@elevenlabs/convai-widget-embed"
-          strategy="afterInteractive"
-          type="text/javascript"
-        />
         
         <Script
           async
@@ -120,10 +115,8 @@ export default function RootLayout({
           </main>
           <Footer />
           <ScrollToTop />
+          <CallButton />
           <WhatsAppFloatingButton />
-          
-          {/* ElevenLabs AI Conversational Agent */}
-          <elevenlabs-convai agent-id="agent_7201k88paba0fyt81tspvmnyzzgm"></elevenlabs-convai>
         </div>
       </body>
     </html>

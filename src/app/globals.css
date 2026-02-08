@@ -487,28 +487,3 @@ Bento Grid Optimizations for Why Choose Us */
 .flatpickr-time .arrowDown {
   @apply text-primary-600 hover:text-primary-700;
 }
-
-/* ElevenLabs Conversational AI Widget Positioning */
-elevenlabs-convai {
-  /* Position to bottom-left to avoid WhatsApp button on bottom-right */
-  position: fixed !important;
-  bottom: -1.2rem !important;
-  left: 16rem !important;
-  right: auto !important;
-  z-index: 40 !important;
-}
-
-/* Responsive adjustments for ElevenLabs widget */
-@media (max-width: 640px) {
-  elevenlabs-convai {
-    bottom: -1.3rem !important;
-    left: 15rem !important;
-  }
-}
-
-/* Ensure it doesn't overlap on print */
-@media print {
-  elevenlabs-convai {
-    display: none !important;
-  }
-}
