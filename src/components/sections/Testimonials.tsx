@@ -26,7 +26,7 @@ const testimonials: Testimonial[] = [
   },
   {
     id: '2',
-    name: 'DHRUV Kumar',
+    name: 'Dhruv Kumar',
     rating: 5,
     timeAgo: '3 months ago',
     reviewerMeta: '1 review · 1 photo',
