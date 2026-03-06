@@ -1,6 +1,9 @@
+'use client'
+
 import Link from 'next/link'
 import { HiPhone, HiMail, HiLocationMarker, HiClock } from 'react-icons/hi'
 import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from 'react-icons/fa'
+import UnderlineToBackground from '@/components/ui/underline-to-background'
 
 const quickLinks = [
   { name: 'Home', href: '/' },
@@ -38,7 +41,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <div className="text-2xl font-bold text-primary-600">
+            <div className="text-2xl font-serif font-bold  text-primary-600">
               Dental Solutions
             </div>
             <p className="text-gray-600 text-sm leading-relaxed">
@@ -149,23 +152,54 @@ export default function Footer() {
       </div>
       
       {/* Bottom Section - Full Width */}
-      <div className="w-full" style={{ backgroundColor: '#0e8cd0ff' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-white text-sm">
-              © {new Date().getFullYear()} Dental Solutions. All rights reserved.
+      <div className="w-full border-t border-white/20" style={{ backgroundColor: '#0e8cd0ff' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+          <div className="flex flex-col lg:flex-row justify-between items-center gap-5 lg:gap-8">
+            
+            {/* Left: Copyright */}
+            <div className="text-white/60 text-sm flex-1 text-center lg:text-left whitespace-nowrap">
+              Copyright © {new Date().getFullYear()} Dental Solutions. All rights reserved.
             </div>
-            <div className="flex space-x-6 text-sm">
-              <Link href="/privacy" className="text-blue-100 hover:text-white transition-colors">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="text-blue-100 hover:text-white transition-colors">
+
+            {/* Middle: Links */}
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm flex-1 whitespace-nowrap">
+              <Link href="/terms" className="text-white/80 hover:text-white transition-colors">
                 Terms of Service
               </Link>
-              <Link href="/sitemap-page" className="text-blue-100 hover:text-white transition-colors">
+              <Link href="/privacy" className="text-white/80 hover:text-white transition-colors">
+                Privacy Policy
+              </Link>
+              <Link href="/sitemap-page" className="text-white/80 hover:text-white transition-colors">
                 Sitemap
               </Link>
             </div>
+
+            {/* Right: Agency branding */}
+            <div className="flex-1 flex justify-center lg:justify-end">
+              <p className="text-sm text-white/60 flex items-center gap-1.5 whitespace-nowrap">
+                <span>Developed &amp; maintained by</span>
+                <a
+                  href="https://wa.me/917888327471"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 font-medium text-white/90 hover:text-white transition-colors group"
+                  aria-label="Contact Gentle Tech Labs on WhatsApp"
+                >
+                  <span className="font-mono text-xs opacity-80 group-hover:opacity-100 transition-opacity tracking-tighter text-orange-200">
+                    &lt;/&gt;
+                  </span>
+                  <UnderlineToBackground
+                    targetTextColor="#0e8cd0"
+                    underlineHeightRatio={0.12}
+                    underlinePaddingRatio={0.05}
+                    transition={{ type: 'spring', damping: 28, stiffness: 260 }}
+                  >
+                    Gentle Tech Labs
+                  </UnderlineToBackground>
+                </a>
+              </p>
+            </div>
+
           </div>
         </div>
       </div>
