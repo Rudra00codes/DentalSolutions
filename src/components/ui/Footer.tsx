@@ -31,10 +31,10 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer 
-      className="text-gray-800 rounded-t-[50px] overflow-hidden" 
-      style={{ 
-        backgroundImage: 'linear-gradient(120deg, #bdd4f98b 0%, #afe0f7ff 100%)' 
+    <footer
+      className="text-gray-800 rounded-t-[50px] overflow-hidden"
+      style={{
+        backgroundImage: 'linear-gradient(120deg, #bdd4f98b 0%, #afe0f7ff 100%)'
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -45,10 +45,10 @@ export default function Footer() {
               Dental Solutions
             </div>
             <p className="text-gray-600 text-sm leading-relaxed">
-              Providing exceptional dental care with advanced technology and compassionate service. 
+              Providing exceptional dental care with advanced technology and compassionate service.
               Your smile is our priority.
             </p>
-            
+
             {/* Social Media Links */}
             <div className="flex space-x-4">
               {socialLinks.map((social) => {
@@ -118,27 +118,27 @@ export default function Footer() {
                   <p>Zirakpur, Punjab 140603</p>
                 </div>
               </div>
-              
+
               <div className="flex items-center space-x-3">
                 <HiPhone className="h-5 w-5 text-primary-600 flex-shrink-0" />
-                <Link 
+                <Link
                   href="tel:+919780025988"
                   className="text-gray-600 hover:text-primary-600 transition-colors text-sm"
                 >
                   +91 97800 25988
                 </Link>
               </div>
-              
+
               <div className="flex items-center space-x-3">
                 <HiMail className="h-5 w-5 text-primary-600 flex-shrink-0" />
-                <Link 
+                <Link
                   href="mailto:info@dentalsolutions.com"
                   className="text-gray-600 hover:text-primary-600 transition-colors text-sm"
                 >
                   info@dentalsolutions.com
                 </Link>
               </div>
-              
+
               <div className="flex items-start space-x-3">
                 <HiClock className="h-5 w-5 text-primary-600 mt-0.5 flex-shrink-0" />
                 <div className="text-gray-600 text-sm">
@@ -150,12 +150,12 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      
+
       {/* Bottom Section - Full Width */}
       <div className="w-full border-t border-white/20" style={{ backgroundColor: '#0e8cd0ff' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-5 lg:gap-8">
-            
+
             {/* Left: Copyright */}
             <div className="text-white/60 text-sm flex-1 text-center lg:text-left whitespace-nowrap">
               Copyright © {new Date().getFullYear()} Dental Solutions. All rights reserved.
@@ -176,7 +176,7 @@ export default function Footer() {
 
             {/* Right: Agency branding */}
             <div className="flex-1 flex justify-center lg:justify-end">
-              <p className="text-sm text-white/60 flex items-center gap-1.5 whitespace-nowrap">
+              <div className="text-sm text-white/60 flex items-center gap-1.5 whitespace-nowrap">
                 <span>Developed &amp; maintained by</span>
                 <a
                   href="https://wa.me/917888327471"
@@ -197,7 +197,7 @@ export default function Footer() {
                     Gentle Tech Labs
                   </UnderlineToBackground>
                 </a>
-              </p>
+              </div>
             </div>
 
           </div>
