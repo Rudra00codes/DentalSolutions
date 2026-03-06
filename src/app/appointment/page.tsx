@@ -55,13 +55,13 @@ export default function Appointment() {
                   Fill out the form below and we&apos;ll contact you within 24 hours to confirm your appointment. All fields marked with * are required.
                 </p>
               </div>
-              
+
               <AppointmentFormWrapper />
             </div>
           </div>
 
           {/* Sidebar Information */}
-          <div className="lg:col-span-1 space-y-8">
+          <div className="lg:col-span-1 space-y-8 pb-24 lg:pb-0">
             {/* Contact Information */}
             <div className="bg-white rounded-2xl shadow-lg p-6">
               <h3 className="text-xl font-bold text-gray-900 mb-6">
@@ -79,33 +79,33 @@ export default function Appointment() {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-3">
                   <FiPhone className="w-5 h-5 text-primary-600 mt-1 flex-shrink-0" />
                   <div>
                     <p className="font-medium text-gray-900">Phone</p>
-                    <a 
-                      href="tel:+919780025988" 
+                    <a
+                      href="tel:+919780025988"
                       className="text-primary-600 hover:text-primary-700 transition-colors"
                     >
                       +91 97800 25988
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-3">
                   <FiMail className="w-5 h-5 text-primary-600 mt-1 flex-shrink-0" />
                   <div>
                     <p className="font-medium text-gray-900">Email</p>
-                    <a 
-                      href="mailto:info@dentalsolutions.com" 
+                    <a
+                      href="mailto:info@dentalsolutions.com"
                       className="text-primary-600 hover:text-primary-700 transition-colors"
                     >
                       info@dentalsolutions.com
                     </a>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-3">
                   <FiClock className="w-5 h-5 text-primary-600 mt-1 flex-shrink-0" />
                   <div>
@@ -136,7 +136,7 @@ export default function Appointment() {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-3">
                   <div className="w-6 h-6 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
                     2
@@ -148,7 +148,7 @@ export default function Appointment() {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-3">
                   <div className="w-6 h-6 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
                     3
@@ -200,7 +200,7 @@ export default function Appointment() {
                   Experienced dentists with advanced training in modern dental techniques.
                 </p>
               </div>
-              
+
               <div className="text-center">
                 <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <FiClock className="w-8 h-8 text-primary-600" />
@@ -210,7 +210,7 @@ export default function Appointment() {
                   Advanced technology and techniques for comfortable, pain-free treatments.
                 </p>
               </div>
-              
+
               <div className="text-center">
                 <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <FiMapPin className="w-8 h-8 text-primary-600" />

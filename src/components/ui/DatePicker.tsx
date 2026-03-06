@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import flatpickr from 'flatpickr'
 import { Instance } from 'flatpickr/dist/types/instance'
+import 'flatpickr/dist/flatpickr.min.css'
 import { cn } from '@/lib/utils'
 
 interface DatePickerProps {

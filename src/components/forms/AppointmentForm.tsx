@@ -70,41 +70,41 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
 
   const validateTime = (time: string): string | undefined => {
     if (!time) return 'Time is required'
-    
+
     // Validate time is within business hours
     const [hours, minutes] = time.split(':').map(Number)
-    
+
     // Determine business hours based on selected date
     let startHour = 10
     let endHour = 22
-    
+
     if (formData.date) {
       const date = new Date(formData.date)
       const dayOfWeek = date.getDay()
-      
+
       if (dayOfWeek === 0) {
         // Sunday: 10 AM - 8 PM
         endHour = 20
       }
     }
-    
+
     if (hours < startHour || hours >= endHour) {
-      const dayLabel = formData.date && new Date(formData.date).getDay() === 0 
-        ? 'Sunday (10:00 AM - 8:00 PM)' 
+      const dayLabel = formData.date && new Date(formData.date).getDay() === 0
+        ? 'Sunday (10:00 AM - 8:00 PM)'
         : 'Mon-Sat (10:00 AM - 10:00 PM)'
       return `Please select a time within business hours: ${dayLabel}`
     }
-    
+
     return undefined
   }
 
   // Handle input changes with immediate validation
   const handleInputChange = (field: keyof AppointmentData, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }))
-    
+
     // Mark field as touched when value changes
     setTouched(prev => ({ ...prev, [field]: true }))
-    
+
     // Validate the new value immediately
     let error: string | undefined
     switch (field) {
@@ -124,7 +124,7 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
         error = validateTime(value)
         break
     }
-    
+
     // Update error state with the validation result
     setErrors(prev => ({ ...prev, [field]: error }))
   }
@@ -132,7 +132,7 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
   // Handle field blur for validation (using current formData)
   const handleBlur = (field: keyof AppointmentData) => {
     setTouched(prev => ({ ...prev, [field]: true }))
-    
+
     // Use setTimeout to ensure state has updated before validating
     setTimeout(() => {
       setFormData(currentData => {
@@ -154,7 +154,7 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
             error = validateTime(currentData.time)
             break
         }
-        
+
         setErrors(prev => ({ ...prev, [field]: error }))
         return currentData
       })
@@ -186,7 +186,7 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     if (!validateForm()) {
       return
     }
@@ -240,7 +240,7 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
           disabled={loading}
         />
         {errors.name && touched.name && (
-          <p id="name-error" role="alert" className="mt-1 text-sm text-red-600">{errors.name}</p>
+          <p id="name-error" role="alert" className="mt-2 text-sm text-red-600 font-medium">{errors.name}</p>
         )}
       </div>
 
@@ -268,7 +268,7 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
           disabled={loading}
         />
         {errors.phone && touched.phone && (
-          <p id="phone-error" role="alert" className="mt-1 text-sm text-red-600">{errors.phone}</p>
+          <p id="phone-error" role="alert" className="mt-2 text-sm text-red-600 font-medium">{errors.phone}</p>
         )}
       </div>
 
@@ -295,7 +295,7 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
           disabled={loading}
         />
         {errors.email && touched.email && (
-          <p id="email-error" role="alert" className="mt-1 text-sm text-red-600">{errors.email}</p>
+          <p id="email-error" role="alert" className="mt-2 text-sm text-red-600 font-medium">{errors.email}</p>
         )}
       </div>
 
@@ -304,7 +304,7 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
         {/* Date Field */}
         <div>
           <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-2">
-            📅 Preferred Date *
+            <span className="inline-block w-5 text-center mr-1">📅</span> Preferred Date *
           </label>
           <DatePicker
             id="date"
@@ -320,14 +320,14 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
             aria-describedby={errors.date && touched.date ? 'date-error' : undefined}
           />
           {errors.date && touched.date && (
-            <p id="date-error" role="alert" className="mt-1 text-sm text-red-600">{errors.date}</p>
+            <p id="date-error" role="alert" className="mt-2 text-sm text-red-600 font-medium">{errors.date}</p>
           )}
         </div>
 
         {/* Time Field */}
         <div>
           <label htmlFor="time" className="block text-sm font-medium text-gray-700 mb-2">
-            🕐 Preferred Time *
+            <span className="inline-block w-5 text-center mr-1">🕐</span> Preferred Time *
           </label>
           <TimePicker
             id="time"
@@ -343,7 +343,7 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
             aria-describedby={errors.time && touched.time ? 'time-error' : undefined}
           />
           {errors.time && touched.time && (
-            <p id="time-error" role="alert" className="mt-1 text-sm text-red-600">{errors.time}</p>
+            <p id="time-error" role="alert" className="mt-2 text-sm text-red-600 font-medium">{errors.time}</p>
           )}
         </div>
       </div>
@@ -351,7 +351,7 @@ export default function AppointmentForm({ onSubmit, loading = false }: Appointme
       {/* Branch Selection */}
       <div>
         <label htmlFor="branch" className="block text-sm font-medium text-gray-700 mb-2">
-          📍 Branch Location *
+          <span className="inline-block w-5 text-center mr-1">📍</span> Branch Location *
         </label>
         <div className="relative">
           <select
